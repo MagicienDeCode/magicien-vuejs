@@ -85,7 +85,6 @@ onMounted(async () => {
     </div>
 
     <div v-else class="article-content">
-      <h1 class="article-title">{{ articleTitle }}</h1>
       <MarkdownRenderer :content="markdownContent" />
     </div>
 
@@ -96,12 +95,24 @@ onMounted(async () => {
 <style lang="less" scoped>
 .article-detail {
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  min-height: 60vh;
 }
 
 .breads {
   margin-bottom: 24px;
+  width: 100%;
+  align-self: center;
+}
+
+:deep(.backward-button) {
+  width: 100%;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .loading-container {
@@ -109,25 +120,22 @@ onMounted(async () => {
   justify-content: center;
   align-items: center;
   min-height: 400px;
+  width: 100%;
 }
 
 .error-container {
   padding: 48px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .article-content {
   background: white;
-  padding: 32px;
+  padding: 10px;
   border-radius: @border-radius-base;
   box-shadow: @box-shadow-base;
-}
-
-.article-title {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 24px;
-  color: @text-color;
-  border-bottom: 2px solid @primary-color;
-  padding-bottom: 16px;
+  width: 100%;
+  margin: 0 auto;
 }
 </style>

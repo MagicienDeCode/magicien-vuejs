@@ -2,6 +2,15 @@
 import AppHeader from '@/components/layout/AppHeader.vue'
 import AppFooter from '@/components/layout/AppFooter.vue'
 import { useHead } from '@vueuse/head'
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
+
+const route = useRoute()
+
+// Check if current route is an article detail page
+const isArticleDetail = computed(() => {
+  return route.name === 'article-detail'
+})
 
 useHead({
   title: 'MagicienDeCode',
@@ -24,7 +33,7 @@ useHead({
     </a-layout-header>
 
     <a-layout-content class="app-content">
-      <div class="content-container">
+      <div class="content-container" :class="{ 'full-width': isArticleDetail }">
         <router-view />
       </div>
     </a-layout-content>
@@ -104,6 +113,11 @@ useHead({
     max-width: 1200px;
     padding: 0 24px;
     margin: 0 auto;
+
+    &.full-width {
+      max-width: 100%;
+      padding: 0;
+    }
   }
 
   @media (min-width: 1001px) {
