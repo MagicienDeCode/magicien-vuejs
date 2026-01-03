@@ -25,7 +25,7 @@ const sortedTitles = computed(() => {
         :key="index"
         :label="title.creationDate"
       >
-        <RouterLink :to="`/${title.page}`">{{ title.title }}</RouterLink>
+        <RouterLink :to="`/articles/${title.page}`">{{ title.title }}</RouterLink>
       </a-timeline-item>
     </a-timeline>
   </div>

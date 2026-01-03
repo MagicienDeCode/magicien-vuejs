@@ -30,13 +30,17 @@ onMounted(async () => {
   try {
     loading.value = true
     const path = `${category.value}/${slug.value}`
+    console.log('Loading article from path:', path)
     const rawMarkdown = await loadMarkdownContent(path)
 
+    console.log('Loaded markdown length:', rawMarkdown?.length || 0)
     if (rawMarkdown) {
       const parsed = parseMarkdown(rawMarkdown)
+      console.log('Parsed markdown data:', parsed.data)
       markdownContent.value = parsed.content
       articleTitle.value = parsed.data.title || slug.value
     } else {
+      console.error('No markdown content loaded')
       error.value = true
     }
   } catch (err) {
