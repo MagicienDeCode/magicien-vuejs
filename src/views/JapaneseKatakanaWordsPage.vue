@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useHead } from '@vueuse/head'
 import { useRouter, RouterLink } from 'vue-router'
-import { LeftOutlined } from '@ant-design/icons-vue'
+import { LeftOutlined, PlayCircleOutlined, PauseCircleOutlined, ReloadOutlined } from '@ant-design/icons-vue'
 
 useHead({
   title: 'カタカナ単語 - MagicienDeCode',
@@ -21,6 +21,9 @@ interface KatakanaWord {
 const router = useRouter()
 const katakanaWords = ref<KatakanaWord[]>([])
 const loading = ref(true)
+const isPlaying = ref(false)
+const currentPlayingIndex = ref(-1)
+const audioRef = ref<HTMLAudioElement | null>(null)
 
 const parseCSV = (text: string): KatakanaWord[] => {
   const lines = text.trim().split('\n')
@@ -54,8 +57,94 @@ onMounted(async () => {
   }
 })
 
+onUnmounted(() => {
+  stopPlayback()
+})
+
 const goBack = () => {
   router.back()
+}
+
+const playNextAudio = () => {
+  if (currentPlayingIndex.value >= katakanaWords.value.length - 1) {
+    // Finished playing all
+    stopPlayback()
+    return
+  }
+
+  currentPlayingIndex.value++
+  const word = katakanaWords.value[currentPlayingIndex.value]
+  const audioPath = `/src/data/japanese/words/downloads/katakana/${word.katakana}.mp3`
+
+  if (audioRef.value) {
+    audioRef.value.src = audioPath
+    audioRef.value.play().catch(error => {
+      console.error('Failed to play audio:', error)
+      // Try next one
+      playNextAudio()
+    })
+  }
+}
+
+const startPlayback = () => {
+  if (katakanaWords.value.length === 0) return
+
+  isPlaying.value = true
+  currentPlayingIndex.value = -1
+  playNextAudio()
+}
+
+const pausePlayback = () => {
+  isPlaying.value = false
+  if (audioRef.value) {
+    audioRef.value.pause()
+  }
+}
+
+const stopPlayback = () => {
+  isPlaying.value = false
+  currentPlayingIndex.value = -1
+  if (audioRef.value) {
+    audioRef.value.pause()
+    audioRef.value.currentTime = 0
+  }
+}
+
+const resetPlayback = () => {
+  stopPlayback()
+  currentPlayingIndex.value = -1
+}
+
+const handleAudioEnded = () => {
+  if (isPlaying.value) {
+    // Add a small delay before playing next
+    setTimeout(() => {
+      playNextAudio()
+    }, 500)
+  }
+}
+
+const handleAudioError = () => {
+  console.error('Audio error, skipping to next')
+  if (isPlaying.value) {
+    playNextAudio()
+  }
+}
+
+const playIndividualWord = (word: KatakanaWord) => {
+  // Pause sequential playback if active
+  if (isPlaying.value) {
+    pausePlayback()
+  }
+
+  const audioPath = `/src/data/japanese/words/downloads/katakana/${word.katakana}.mp3`
+
+  if (audioRef.value) {
+    audioRef.value.src = audioPath
+    audioRef.value.play().catch(error => {
+      console.error('Failed to play audio:', error)
+    })
+  }
 }
 
 const columns = [
@@ -64,6 +153,13 @@ const columns = [
     dataIndex: 'katakana',
     key: 'katakana',
     width: '25%',
+    customRender: ({ text, record }: { text: string; record: KatakanaWord }) => ({
+      children: text,
+      props: {
+        class: 'clickable-katakana',
+        onClick: () => playIndividualWord(record)
+      }
+    })
   },
   {
     title: 'Romaji',
@@ -110,6 +206,84 @@ const columns = [
     <div class="page-content">
       <h1>カタカナ単語</h1>
       <p class="subtitle">Katakana Vocabulary</p>
+
+      <!-- Audio Player Section -->
+      <div class="audio-player-section">
+        <div class="audio-controls">
+          <a-button
+            v-if="!isPlaying"
+            type="primary"
+            size="large"
+            @click="startPlayback"
+            :disabled="loading || katakanaWords.length === 0"
+          >
+            <template #icon>
+              <PlayCircleOutlined />
+            </template>
+            Play All Words
+          </a-button>
+
+          <a-button
+            v-else
+            type="primary"
+            size="large"
+            danger
+            @click="pausePlayback"
+          >
+            <template #icon>
+              <PauseCircleOutlined />
+            </template>
+            Pause
+          </a-button>
+
+          <a-button
+            size="large"
+            @click="resetPlayback"
+            :disabled="currentPlayingIndex === -1"
+          >
+            <template #icon>
+              <ReloadOutlined />
+            </template>
+            Reset
+          </a-button>
+        </div>
+
+        <div v-if="currentPlayingIndex >= 0" class="current-playing">
+          <div class="playing-header">
+            <span class="playing-label">Now Playing:</span>
+            <span class="playing-progress">{{ currentPlayingIndex + 1 }} / {{ katakanaWords.length }}</span>
+          </div>
+          <div class="playing-content">
+            <div class="playing-main">
+              <span class="playing-word">{{ katakanaWords[currentPlayingIndex]?.katakana }}</span>
+              <span class="playing-romaji">{{ katakanaWords[currentPlayingIndex]?.romaji }}</span>
+            </div>
+            <div class="playing-translations">
+              <span class="playing-english">
+                <span class="translation-label">English:</span>
+                {{ katakanaWords[currentPlayingIndex]?.english }}
+              </span>
+              <span class="playing-chinese">
+                <span class="translation-label">中文:</span>
+                {{ katakanaWords[currentPlayingIndex]?.chinese }}
+              </span>
+            </div>
+          </div>
+          <a-progress
+            :percent="Math.round(((currentPlayingIndex + 1) / katakanaWords.length) * 100)"
+            :show-info="false"
+            stroke-color="#1890ff"
+          />
+        </div>
+
+        <!-- Hidden audio element -->
+        <audio
+          ref="audioRef"
+          @ended="handleAudioEnded"
+          @error="handleAudioError"
+          style="display: none;"
+        />
+      </div>
 
       <a-table
         :data-source="katakanaWords"
@@ -194,6 +368,122 @@ const columns = [
     margin-bottom: 32px;
     font-size: 14px;
   }
+}
+
+.audio-player-section {
+  width: 100%;
+  margin-bottom: 32px;
+  padding: 24px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+  border-radius: 12px;
+  border: 1px solid #e0e6ed;
+}
+
+.audio-controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.current-playing {
+  margin-top: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.playing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.playing-label {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.65);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.playing-progress {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.45);
+  font-weight: 500;
+  background: #f5f5f5;
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.playing-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.playing-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.playing-word {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1890ff;
+  line-height: 1.2;
+}
+
+.playing-romaji {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.65);
+  font-weight: 500;
+}
+
+.playing-translations {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding: 16px;
+  background: #fafafa;
+  border-radius: 6px;
+}
+
+.playing-english,
+.playing-chinese {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.translation-label {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.45);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.playing-english {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+}
+
+.playing-chinese {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
 }
 
 :deep(.table-row-light) {
@@ -289,6 +579,28 @@ const columns = [
   .back-button {
     align-self: flex-end;
   }
+
+  .audio-player-section {
+    padding: 16px;
+  }
+
+  .playing-word {
+    font-size: 26px;
+  }
+
+  .playing-romaji {
+    font-size: 16px;
+  }
+
+  .playing-translations {
+    gap: 20px;
+    padding: 12px;
+  }
+
+  .playing-english,
+  .playing-chinese {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -299,6 +611,52 @@ const columns = [
 
   h1 {
     font-size: 24px;
+  }
+
+  .audio-player-section {
+    padding: 12px;
+  }
+
+  .audio-controls {
+    flex-direction: column;
+    width: 100%;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .playing-word {
+    font-size: 24px;
+  }
+
+  .playing-romaji {
+    font-size: 14px;
+  }
+
+  .current-playing {
+    padding: 16px;
+  }
+
+  .playing-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .playing-translations {
+    flex-direction: column;
+    gap: 16px;
+    padding: 12px;
+  }
+
+  .playing-english,
+  .playing-chinese {
+    font-size: 14px;
+  }
+
+  .translation-label {
+    font-size: 11px;
   }
 }
 </style>
