@@ -84,7 +84,7 @@ const goBack = () => {
             ]"
             :pagination="false"
             :show-header="false"
-            :row-class-name="(_, index) => index % 2 === 0 ? 'table-row-light' : 'table-row-dark'"
+            :row-class-name="(_: any, index: number) => index % 2 === 0 ? 'table-row-light' : 'table-row-dark'"
             row-key="index"
           />
         </a-tab-pane>
@@ -105,7 +105,7 @@ const goBack = () => {
             ]"
             :pagination="false"
             :show-header="false"
-            :row-class-name="(_, index) => index % 2 === 0 ? 'table-row-light' : 'table-row-dark'"
+            :row-class-name="(_: any, index: number) => index % 2 === 0 ? 'table-row-light' : 'table-row-dark'"
             row-key="index"
           />
         </a-tab-pane>
