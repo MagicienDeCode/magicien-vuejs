@@ -51,7 +51,7 @@ const parseCSV = (text: string): HiraganaWord[] => {
 
 onMounted(async () => {
   try {
-    const response = await fetch('/src/data/japanese/words/hiragana.csv')
+    const response = await fetch('/data/japanese/words/hiragana.csv')
     const text = await response.text()
     hiraganaWords.value = parseCSV(text)
   } catch (error) {
@@ -82,7 +82,7 @@ const playNextAudio = () => {
     playNextAudio()
     return
   }
-  const audioPath = `/src/data/japanese/words/downloads/hiragana/${word.word}.mp3`
+  const audioPath = `/data/japanese/words/downloads/hiragana/${word.word}.mp3`
 
   if (audioRef.value) {
     audioRef.value.src = audioPath
@@ -145,7 +145,7 @@ const playIndividualWord = (word: HiraganaWord) => {
     pausePlayback()
   }
 
-  const audioPath = `/src/data/japanese/words/downloads/hiragana/${word.word}.mp3`
+  const audioPath = `/data/japanese/words/downloads/hiragana/${word.word}.mp3`
 
   if (audioRef.value) {
     audioRef.value.src = audioPath

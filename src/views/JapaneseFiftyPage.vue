@@ -23,8 +23,8 @@ const parseCSV = (text: string): string[][] => {
 onMounted(async () => {
   try {
     const [hiraganaRes, katakanaRes] = await Promise.all([
-      fetch('/src/data/japanese/fifty.csv'),
-      fetch('/src/data/japanese/fifty2.csv')
+      fetch('/data/japanese/fifty.csv'),
+      fetch('/data/japanese/fifty2.csv')
     ])
 
     const hiraganaText = await hiraganaRes.text()

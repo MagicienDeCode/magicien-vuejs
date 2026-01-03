@@ -49,7 +49,7 @@ const parseCSV = (text: string): KatakanaWord[] => {
 
 onMounted(async () => {
   try {
-    const response = await fetch('/src/data/japanese/words/katakana.csv')
+    const response = await fetch('/data/japanese/words/katakana.csv')
     const text = await response.text()
     katakanaWords.value = parseCSV(text)
   } catch (error) {
@@ -80,7 +80,7 @@ const playNextAudio = () => {
     playNextAudio()
     return
   }
-  const audioPath = `/src/data/japanese/words/downloads/katakana/${word.katakana}.mp3`
+  const audioPath = `/data/japanese/words/downloads/katakana/${word.katakana}.mp3`
 
   if (audioRef.value) {
     audioRef.value.src = audioPath
@@ -143,7 +143,7 @@ const playIndividualWord = (word: KatakanaWord) => {
     pausePlayback()
   }
 
-  const audioPath = `/src/data/japanese/words/downloads/katakana/${word.katakana}.mp3`
+  const audioPath = `/data/japanese/words/downloads/katakana/${word.katakana}.mp3`
 
   if (audioRef.value) {
     audioRef.value.src = audioPath
