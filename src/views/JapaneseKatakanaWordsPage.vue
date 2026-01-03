@@ -31,8 +31,10 @@ const parseCSV = (text: string): KatakanaWord[] => {
 
   // Skip header row (index 0) and parse data rows
   for (let i = 1; i < lines.length; i++) {
-    const columns = lines[i].split(',').map(col => col.trim())
-    if (columns.length >= 4) {
+    const line = lines[i]
+    if (!line) continue
+    const columns = line.split(',').map(col => col.trim())
+    if (columns.length >= 4 && columns[0] && columns[1] && columns[2] && columns[3]) {
       data.push({
         katakana: columns[0],
         romaji: columns[1],
@@ -74,6 +76,10 @@ const playNextAudio = () => {
 
   currentPlayingIndex.value++
   const word = katakanaWords.value[currentPlayingIndex.value]
+  if (!word) {
+    playNextAudio()
+    return
+  }
   const audioPath = `/src/data/japanese/words/downloads/katakana/${word.katakana}.mp3`
 
   if (audioRef.value) {
