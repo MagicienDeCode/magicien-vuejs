@@ -29,6 +29,11 @@ const router = createRouter({
       component: () => import('../views/JapaneseFiftyPage.vue'),
     },
     {
+      path: '/articles/japanese/katakana',
+      name: 'japanese-katakana-words',
+      component: () => import('../views/JapaneseKatakanaWordsPage.vue'),
+    },
+    {
       path: '/articles/chinese/gushiwen-tang',
       name: 'gushiwen-tang',
       component: () => import('../views/GushiwenTangPage.vue'),

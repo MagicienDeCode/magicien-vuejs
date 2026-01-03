@@ -168,8 +168,7 @@ const goBack = () => {
   box-shadow: @box-shadow-base;
   flex-direction: column;
   gap: 0;
-  overflow-x: hidden;
-  max-width: 100vw;
+  overflow-x: auto;
 
   h1 {
     color: #1890ff;
@@ -192,21 +191,52 @@ const goBack = () => {
 :deep(.ant-table-cell) {
   text-align: center !important;
   font-size: 16px !important;
-  padding: 8px !important;
-  letter-spacing: normal;
+  padding: 12px 8px !important;
+  border: 1px solid #f0f0f0 !important;
+  white-space: nowrap !important;
+  min-width: 50px !important;
+}
+
+:deep(.ant-table-thead > tr > th) {
+  background-color: transparent !important;
+  color: inherit !important;
+  font-weight: normal !important;
+  text-align: center !important;
+  border: none !important;
 }
 
 :deep(.ant-table) {
   font-size: 16px;
-  max-width: 100%;
-  width: auto;
-  margin: 0 auto !important;
-  table-layout: auto;
+  width: 100% !important;
+  table-layout: fixed !important;
+  min-width: 900px !important;
+}
+
+:deep(.ant-table-wrapper) {
+  width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+:deep(.ant-spin-nested-loading),
+:deep(.ant-spin-container) {
+  width: 100% !important;
+  overflow-x: auto !important;
 }
 
 :deep(.ant-table table) {
-  width: auto !important;
-  max-width: 100%;
+  width: 100% !important;
+  min-width: 900px !important;
+  display: table !important;
+}
+
+:deep(.ant-table-tbody > tr > td) {
+  border-right: 1px solid #f0f0f0 !important;
+}
+
+:deep(.ant-table-tbody > tr),
+:deep(.ant-table-thead > tr) {
+  display: table-row !important;
 }
 
 :deep(.ant-tabs) {
@@ -214,94 +244,107 @@ const goBack = () => {
 }
 
 :deep(.ant-tabs-content) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
+  overflow-x: auto;
 }
 
 :deep(.ant-tabs-tabpane) {
-  display: flex;
-  justify-content: center;
   width: 100%;
-}
-
-:deep(.ant-spin-nested-loading) {
-  width: 100% !important;
-  display: block !important;
-}
-
-:deep(.ant-spin-container) {
-  width: 100% !important;
-  display: flex !important;
-  justify-content: center;
-}
-
-:deep(.ant-table-wrapper) {
-  width: fit-content !important;
-  margin: 0 auto !important;
+  overflow-x: auto;
 }
 
 // Responsive adjustments for smaller screens
 @media (max-width: 1200px) {
   :deep(.ant-table-cell) {
-    padding: 6px 3px !important;
+    padding: 10px 6px !important;
     font-size: 15px !important;
+    min-width: 45px !important;
+  }
+
+  :deep(.ant-table),
+  :deep(.ant-table table) {
+    min-width: 850px !important;
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
+  .page-content {
+    padding: 20px;
+  }
+
   :deep(.ant-table-cell) {
-    padding: 5px 2px !important;
+    padding: 8px 5px !important;
     font-size: 14px !important;
-  }
-}
-
-@media (max-width: 900px) {
-  :deep(.ant-table-cell) {
-    padding: 4px 2px !important;
-    font-size: 13px !important;
-    letter-spacing: -0.3px !important;
+    min-width: 42px !important;
   }
 
-  :deep(.ant-table) {
-    font-size: 13px !important;
+  :deep(.ant-table),
+  :deep(.ant-table table) {
+    min-width: 800px !important;
   }
 }
 
 @media (max-width: 768px) {
-  :deep(.ant-table-cell) {
-    padding: 3px 1.5px !important;
-    font-size: 12px !important;
-    letter-spacing: -0.5px !important;
+  .page-content {
+    padding: 16px;
   }
 
-  :deep(.ant-table) {
-    font-size: 12px !important;
+  :deep(.ant-table-cell) {
+    padding: 8px 4px !important;
+    font-size: 13px !important;
+    min-width: 38px !important;
+  }
+
+  :deep(.ant-table),
+  :deep(.ant-table table) {
+    min-width: 750px !important;
+  }
+
+  .header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .back-button {
+    align-self: flex-end;
   }
 }
 
 @media (max-width: 576px) {
-  :deep(.ant-table-cell) {
-    padding: 2px 1px !important;
-    font-size: 11px !important;
-    letter-spacing: -0.8px !important;
+  .page-content {
+    padding: 12px;
   }
 
-  :deep(.ant-table) {
-    font-size: 11px !important;
+  :deep(.ant-table-cell) {
+    padding: 6px 3px !important;
+    font-size: 12px !important;
+    min-width: 35px !important;
+  }
+
+  :deep(.ant-table),
+  :deep(.ant-table table) {
+    min-width: 700px !important;
+  }
+
+  h1 {
+    font-size: 24px;
   }
 }
 
-@media (max-width: 480px) {
-  :deep(.ant-table-cell) {
-    padding: 1px 0.5px !important;
-    font-size: 10px !important;
-    letter-spacing: -1px !important;
+@media (max-width: 400px) {
+  .page-content {
+    padding: 8px;
   }
 
-  :deep(.ant-table) {
-    font-size: 10px !important;
+  :deep(.ant-table-cell) {
+    padding: 4px 2px !important;
+    font-size: 11px !important;
+    min-width: 32px !important;
+  }
+
+  :deep(.ant-table),
+  :deep(.ant-table table) {
+    min-width: 650px !important;
   }
 }
 </style>
