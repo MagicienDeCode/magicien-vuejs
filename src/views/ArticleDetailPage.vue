@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted, computed, watch } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useMeta } from '@/composables/useMeta'
+import { useHead } from '@vueuse/head'
 import { useArticles } from '@/composables/useArticles'
 import { parseMarkdown } from '@/utils/markdown'
 import MarkdownRenderer from '@/components/markdown/MarkdownRenderer.vue'
@@ -18,33 +18,28 @@ const error = ref(false)
 const category = computed(() => route.params.category as string)
 const slug = computed(() => route.params.slug as string)
 
-// Use watch to update meta when article loads
-watch(articleTitle, (newTitle) => {
-  useMeta({
-    title: newTitle || 'Article - MagicienDeCode',
-    description: `Article: ${newTitle}`,
-  })
-}, { immediate: true })
+// Set up reactive meta tags
+useHead({
+  title: computed(() => articleTitle.value || 'Article - MagicienDeCode'),
+  meta: computed(() => [
+    { name: 'description', content: `Article: ${articleTitle.value}` },
+  ]),
+})
 
 onMounted(async () => {
   try {
     loading.value = true
     const path = `${category.value}/${slug.value}`
-    console.log('Loading article from path:', path)
     const rawMarkdown = await loadMarkdownContent(path)
 
-    console.log('Loaded markdown length:', rawMarkdown?.length || 0)
     if (rawMarkdown) {
       const parsed = parseMarkdown(rawMarkdown)
-      console.log('Parsed markdown data:', parsed.data)
       markdownContent.value = parsed.content
       articleTitle.value = parsed.data.title || slug.value
     } else {
-      console.error('No markdown content loaded')
       error.value = true
     }
   } catch (err) {
-    console.error('Failed to load article:', err)
     error.value = true
   } finally {
     loading.value = false
@@ -54,17 +49,19 @@ onMounted(async () => {
 
 <template>
   <div class="article-detail">
-    <a-breadcrumb separator=">" class="breads">
-      <a-breadcrumb-item>
-        <RouterLink to="/" class="decoration-none">Home</RouterLink>
-      </a-breadcrumb-item>
-      <a-breadcrumb-item>
-        <RouterLink to="/articles" class="decoration-none">Articles</RouterLink>
-      </a-breadcrumb-item>
-      <a-breadcrumb-item>{{ articleTitle || 'Loading...' }}</a-breadcrumb-item>
-    </a-breadcrumb>
+    <div class="header-row">
+      <a-breadcrumb separator=">" class="breads">
+        <a-breadcrumb-item>
+          <RouterLink to="/" class="decoration-none">Home</RouterLink>
+        </a-breadcrumb-item>
+        <a-breadcrumb-item>
+          <RouterLink to="/articles" class="decoration-none">Articles</RouterLink>
+        </a-breadcrumb-item>
+        <a-breadcrumb-item>{{ articleTitle || 'Loading...' }}</a-breadcrumb-item>
+      </a-breadcrumb>
 
-    <BackButton />
+      <BackButton />
+    </div>
 
     <div v-if="loading" class="loading-container">
       <a-spin size="large" tip="Loading article..." />
@@ -88,7 +85,7 @@ onMounted(async () => {
       <MarkdownRenderer :content="markdownContent" />
     </div>
 
-    <a-float-button-back-top />
+    <a-back-top />
   </div>
 </template>
 
@@ -99,20 +96,26 @@ onMounted(async () => {
   flex-direction: column;
   align-items: center;
   padding: 0;
+  padding-top: 24px;
   min-height: 60vh;
 }
 
-.breads {
-  margin-bottom: 24px;
+.header-row {
   width: 100%;
-  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.breads {
+  flex: 1;
 }
 
 :deep(.backward-button) {
-  width: 100%;
-  margin-bottom: 24px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 
 .loading-container {

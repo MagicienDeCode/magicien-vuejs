@@ -182,7 +182,7 @@ useMeta({
           <br />
         </main>
       </div>
-      <a-float-button-back-top />
+      <a-back-top />
     </div>
 </template>
 

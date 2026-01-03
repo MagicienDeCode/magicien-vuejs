@@ -11,10 +11,11 @@ const goBack = () => {
 
 <template>
   <div class="backward-button">
-    <a-button @click="goBack" shape="circle" class="back-icon-button">
+    <a-button @click="goBack" size="small" class="back-icon-button">
       <template #icon>
         <LeftOutlined />
       </template>
+      <span class="back-text">Back</span>
     </a-button>
   </div>
 </template>
@@ -23,19 +24,31 @@ const goBack = () => {
 @import '@/assets/styles/components/backward.less';
 
 .back-icon-button {
-  background-color: #f0f0f0;
-  border-color: #d9d9d9;
-  color: rgba(0, 0, 0, 0.85);
+  background-color: transparent;
+  border: 1px solid #d9d9d9;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  height: 28px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+
+  .back-text {
+    font-size: 14px;
+  }
 
   &:hover {
-    background-color: #e6e6e6;
-    border-color: #bfbfbf;
-    color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.45);
+    color: rgba(0, 0, 0, 0.88);
   }
 
   &:active {
-    background-color: #d9d9d9;
-    border-color: #bfbfbf;
+    background-color: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.45);
   }
 }
 </style>

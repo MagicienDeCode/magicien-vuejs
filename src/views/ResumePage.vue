@@ -491,7 +491,7 @@ const educationCJZF = [
           </div>
         </main>
       </div>
-      <a-float-button-back-top />
+      <a-back-top />
     </div>
 </template>
 
