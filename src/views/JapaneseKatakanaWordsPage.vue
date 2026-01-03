@@ -500,6 +500,37 @@ const columns = [
   padding: 12px 8px !important;
 }
 
+:deep(.clickable-katakana) {
+  cursor: pointer;
+  color: #1890ff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &:hover {
+    color: #40a9ff;
+    transform: scale(1.1);
+    text-shadow: 0 2px 4px rgba(24, 144, 255, 0.2);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &::after {
+    content: '🔊';
+    font-size: 0;
+    opacity: 0;
+    margin-left: 4px;
+    transition: all 0.3s ease;
+  }
+
+  &:hover::after {
+    font-size: 12px;
+    opacity: 0.6;
+  }
+}
+
 :deep(.ant-table-thead > tr > th) {
   background-color: #1890ff !important;
   color: white !important;
@@ -601,6 +632,10 @@ const columns = [
   .playing-chinese {
     font-size: 14px;
   }
+
+  :deep(.clickable-katakana:hover) {
+    transform: scale(1.05);
+  }
 }
 
 @media (max-width: 576px) {
@@ -657,6 +692,18 @@ const columns = [
 
   .translation-label {
     font-size: 11px;
+  }
+
+  :deep(.clickable-katakana) {
+    font-size: 13px !important;
+  }
+
+  :deep(.clickable-katakana:hover) {
+    transform: scale(1.03);
+  }
+
+  :deep(.clickable-katakana:hover::after) {
+    font-size: 10px;
   }
 }
 </style>
