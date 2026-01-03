@@ -1,0 +1,25 @@
+{
+  "type": "japanese",
+  "children": [
+    {
+      "title": "五十音图 ごじゅうおんず",
+      "page": "japanese/japanese-fifty",
+      "creationDate": "2020-03-30"
+    },
+    {
+      "title": "日语收藏",
+      "page": "japanese/collect",
+      "creationDate": "2025-02-09"
+    },
+    {
+      "title": "文法",
+      "page": "japanese/wenfa",
+      "creationDate": "2025-05-26"
+    },
+    {
+      "title": "日语单词*类别",
+      "page": "japanese/words7",
+      "creationDate": "2025-02-10"
+    }
+  ]
+}

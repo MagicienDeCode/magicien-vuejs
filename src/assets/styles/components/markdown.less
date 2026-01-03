@@ -1,0 +1,142 @@
+.markdown-body {
+  font-size: @font-size-base;
+  line-height: 1.8;
+  color: @text-color;
+  word-wrap: break-word;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: @text-color;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h1 {
+    font-size: 32px;
+    border-bottom: 1px solid @border-color;
+    padding-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 24px;
+    border-bottom: 1px solid @border-color;
+    padding-bottom: 8px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 16px;
+  }
+
+  p {
+    margin-bottom: 16px;
+    line-height: 1.8;
+  }
+
+  a {
+    color: @link-color;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  ul,
+  ol {
+    padding-left: 24px;
+    margin-bottom: 16px;
+
+    li {
+      margin-bottom: 8px;
+      line-height: 1.8;
+    }
+  }
+
+  blockquote {
+    padding: 0 16px;
+    margin: 0 0 16px 0;
+    color: @text-color-secondary;
+    border-left: 4px solid @border-color;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  code {
+    padding: 2px 6px;
+    margin: 0 2px;
+    font-size: 90%;
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f6f8fa;
+    border-radius: @border-radius-base;
+    margin-bottom: 16px;
+
+    code {
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+      border-radius: 0;
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+
+    th,
+    td {
+      padding: 8px 12px;
+      border: 1px solid @border-color;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f6f8fa;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f6f8fa;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: @border-radius-base;
+    margin: 16px 0;
+  }
+
+  hr {
+    height: 1px;
+    padding: 0;
+    margin: 24px 0;
+    background-color: @border-color;
+    border: 0;
+  }
+}

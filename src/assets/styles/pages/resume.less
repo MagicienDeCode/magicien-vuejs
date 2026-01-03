@@ -1,0 +1,220 @@
+.basic-info-left-col {
+  margin: auto;
+}
+
+.resume-info-col {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+
+  h2, h3 {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+    margin-top: 0;
+  }
+
+  h2 {
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 400;
+    color: @text-color;
+  }
+}
+
+.skill-title {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.skill-badge {
+  :deep(.ant-avatar) {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.company-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.company-icon-p7 {
+  width: 60px;
+  height: 30px;
+}
+
+.exp-head {
+  display: flex;
+  align-items: center;
+}
+
+.time-text {
+  margin-left: 20px;
+}
+
+.exp-title {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.black {
+  color: black;
+  font-size: 1.2em;
+}
+
+.pages-xiang-avatar {
+  width: 170px;
+  height: 170px;
+}
+
+.page-main {
+  width: 100%;
+  max-width: 100%;
+
+  .ant-row {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .ant-col {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .ant-flex {
+    width: 100%;
+    padding: 4px;
+  }
+
+  > div {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .pages-xiang-avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .skill-title {
+    font-size: 0.9em;
+  }
+
+  .skill-badge {
+    :deep(.ant-avatar) {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .resume-info-col {
+    h2, h3 {
+      text-align: center;
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .page-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+
+    // Basic info section stays centered
+    > div:first-child {
+      h2, h3, h4 {
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    // Skills, Experience, Education sections align left
+    > div:not(:first-child) {
+      text-align: left;
+      align-items: flex-start;
+      width: 100%;
+
+      h2 {
+        text-align: left;
+        width: 100%;
+      }
+
+      .text-size {
+        text-align: left;
+        width: 100%;
+      }
+    }
+
+    .ant-row {
+      width: 100%;
+      justify-content: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .ant-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin-bottom: 12px;
+
+      &.gutter-row {
+        .ant-flex {
+          justify-content: flex-start;
+          width: 100%;
+          padding: 8px;
+        }
+      }
+    }
+
+    .ant-divider {
+      width: 100%;
+    }
+
+    .exp-head {
+      justify-content: flex-start;
+    }
+
+    .ant-timeline {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .ant-collapse {
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  .basic-info-left-col {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+  }
+
+  // Keep first section (basic info with photo) centered
+  .page-main > div:first-child {
+    .ant-row {
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .ant-col {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
