@@ -220,6 +220,7 @@ const columns = [
 :deep(.ant-table) {
   font-size: 15px;
   width: 100% !important;
+  table-layout: fixed !important;
 }
 
 :deep(.ant-table-wrapper) {
@@ -233,9 +234,43 @@ const columns = [
 
 :deep(.ant-table table) {
   width: 100% !important;
+  table-layout: fixed !important;
+  display: table !important;
+}
+
+:deep(.ant-table-tbody),
+:deep(.ant-table-thead) {
+  width: 100% !important;
+  display: table-row-group !important;
+}
+
+:deep(.ant-table-thead) {
+  display: table-header-group !important;
+}
+
+:deep(.ant-table-tbody > tr),
+:deep(.ant-table-thead > tr) {
+  display: table-row !important;
+  width: 100% !important;
+}
+
+:deep(.ant-table-tbody > tr > td),
+:deep(.ant-table-thead > tr > th) {
+  display: table-cell !important;
+}
+
+:deep(.ant-table-content) {
+  width: 100% !important;
 }
 
 // Responsive adjustments for smaller screens
+@media (max-width: 992px) {
+  :deep(.ant-table-cell) {
+    padding: 10px 6px !important;
+    font-size: 14px !important;
+  }
+}
+
 @media (max-width: 768px) {
   .page-content {
     padding: 16px;

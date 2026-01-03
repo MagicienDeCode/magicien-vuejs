@@ -193,8 +193,6 @@ const goBack = () => {
   font-size: 16px !important;
   padding: 12px 8px !important;
   border: 1px solid #f0f0f0 !important;
-  white-space: nowrap !important;
-  min-width: 50px !important;
 }
 
 :deep(.ant-table-thead > tr > th) {
@@ -209,24 +207,19 @@ const goBack = () => {
   font-size: 16px;
   width: 100% !important;
   table-layout: fixed !important;
-  min-width: 900px !important;
 }
 
 :deep(.ant-table-wrapper) {
   width: 100% !important;
-  overflow-x: auto !important;
-  -webkit-overflow-scrolling: touch !important;
 }
 
 :deep(.ant-spin-nested-loading),
 :deep(.ant-spin-container) {
   width: 100% !important;
-  overflow-x: auto !important;
 }
 
 :deep(.ant-table table) {
   width: 100% !important;
-  min-width: 900px !important;
   display: table !important;
 }
 
@@ -245,59 +238,47 @@ const goBack = () => {
 
 :deep(.ant-tabs-content) {
   width: 100%;
-  overflow-x: auto;
 }
 
 :deep(.ant-tabs-tabpane) {
   width: 100%;
-  overflow-x: auto;
 }
 
 // Responsive adjustments for smaller screens
 @media (max-width: 1200px) {
   :deep(.ant-table-cell) {
-    padding: 10px 6px !important;
+    padding: 9px 5px !important;
     font-size: 15px !important;
-    min-width: 45px !important;
-  }
-
-  :deep(.ant-table),
-  :deep(.ant-table table) {
-    min-width: 850px !important;
   }
 }
 
 @media (max-width: 992px) {
   .page-content {
-    padding: 20px;
+    padding: 16px;
   }
 
   :deep(.ant-table-cell) {
-    padding: 8px 5px !important;
-    font-size: 14px !important;
-    min-width: 42px !important;
+    padding: 7px 3px !important;
+    font-size: 13px !important;
   }
 
-  :deep(.ant-table),
-  :deep(.ant-table table) {
-    min-width: 800px !important;
+  :deep(.ant-table) {
+    font-size: 13px !important;
   }
 }
 
 @media (max-width: 768px) {
   .page-content {
-    padding: 16px;
+    padding: 12px;
   }
 
   :deep(.ant-table-cell) {
-    padding: 8px 4px !important;
-    font-size: 13px !important;
-    min-width: 38px !important;
+    padding: 6px 2px !important;
+    font-size: 12px !important;
   }
 
-  :deep(.ant-table),
-  :deep(.ant-table table) {
-    min-width: 750px !important;
+  :deep(.ant-table) {
+    font-size: 12px !important;
   }
 
   .header-row {
@@ -312,39 +293,39 @@ const goBack = () => {
 
 @media (max-width: 576px) {
   .page-content {
-    padding: 12px;
+    padding: 10px;
   }
 
   :deep(.ant-table-cell) {
-    padding: 6px 3px !important;
-    font-size: 12px !important;
-    min-width: 35px !important;
+    padding: 5px 1.5px !important;
+    font-size: 11px !important;
   }
 
-  :deep(.ant-table),
-  :deep(.ant-table table) {
-    min-width: 700px !important;
+  :deep(.ant-table) {
+    font-size: 11px !important;
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 22px;
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
   .page-content {
     padding: 8px;
   }
 
   :deep(.ant-table-cell) {
-    padding: 4px 2px !important;
-    font-size: 11px !important;
-    min-width: 32px !important;
+    padding: 4px 1px !important;
+    font-size: 10px !important;
   }
 
-  :deep(.ant-table),
-  :deep(.ant-table table) {
-    min-width: 650px !important;
+  :deep(.ant-table) {
+    font-size: 10px !important;
+  }
+
+  h1 {
+    font-size: 20px;
   }
 }
 </style>
