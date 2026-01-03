@@ -24,6 +24,31 @@ const router = createRouter({
       component: () => import('../views/ArticlesPage.vue'),
     },
     {
+      path: '/articles/japanese/japanese-fifty',
+      name: 'japanese-fifty',
+      component: () => import('../views/JapaneseFiftyPage.vue'),
+    },
+    {
+      path: '/articles/chinese/gushiwen-tang',
+      name: 'gushiwen-tang',
+      component: () => import('../views/GushiwenTangPage.vue'),
+    },
+    {
+      path: '/articles/chinese/gushiwen-song',
+      name: 'gushiwen-song',
+      component: () => import('../views/GushiwenSongPage.vue'),
+    },
+    {
+      path: '/articles/chinese/gushiwen-fenghuaxueyue',
+      name: 'gushiwen-fenghuaxueyue',
+      component: () => import('../views/GushiwenFenghuaxueyuePage.vue'),
+    },
+    {
+      path: '/articles/chinese/gushiwen-extra',
+      name: 'gushiwen-extra',
+      component: () => import('../views/GushiwenExtraPage.vue'),
+    },
+    {
       path: '/articles/:category/:slug',
       name: 'article-detail',
       component: () => import('../views/ArticleDetailPage.vue'),

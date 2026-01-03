@@ -3,7 +3,7 @@ import { useMeta } from '@/composables/useMeta'
 import { RouterLink } from 'vue-router'
 
 useMeta({
-  title: 'MagicienDeCode - Home',
+  title: 'MagicienDeCode',
   description: 'Personal website of LI Xiang - Software Engineer',
   keywords: 'magiciendecode, LI Xiang, software engineer, AI, ML, system design',
 })

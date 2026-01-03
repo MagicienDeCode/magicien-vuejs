@@ -1,0 +1,307 @@
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import { useHead } from '@vueuse/head'
+import { useRouter, RouterLink } from 'vue-router'
+import { LeftOutlined } from '@ant-design/icons-vue'
+
+useHead({
+  title: '日本語五十音 - MagicienDeCode',
+  meta: [
+    { name: 'description', content: 'Japanese Hiragana and Katakana Chart' },
+  ],
+})
+
+const router = useRouter()
+const hiraganaData = ref<string[][]>([])
+const katakanaData = ref<string[][]>([])
+
+const parseCSV = (text: string): string[][] => {
+  const lines = text.trim().split('\n')
+  return lines.map(line => line.split(','))
+}
+
+onMounted(async () => {
+  try {
+    const [hiraganaRes, katakanaRes] = await Promise.all([
+      fetch('/src/data/japanese/fifty.csv'),
+      fetch('/src/data/japanese/fifty2.csv')
+    ])
+
+    const hiraganaText = await hiraganaRes.text()
+    const katakanaText = await katakanaRes.text()
+
+    hiraganaData.value = parseCSV(hiraganaText)
+    katakanaData.value = parseCSV(katakanaText)
+  } catch (error) {
+    console.error('Failed to load CSV files:', error)
+  }
+})
+
+const goBack = () => {
+  router.back()
+}
+</script>
+
+<template>
+  <div class="japanese-fifty-page">
+    <div class="header-row">
+      <a-breadcrumb separator=">" class="breads">
+        <a-breadcrumb-item>
+          <RouterLink to="/" class="decoration-none">Home</RouterLink>
+        </a-breadcrumb-item>
+        <a-breadcrumb-item>
+          <RouterLink to="/articles" class="decoration-none">Articles</RouterLink>
+        </a-breadcrumb-item>
+        <a-breadcrumb-item>日本語五十音</a-breadcrumb-item>
+      </a-breadcrumb>
+
+      <a-button @click="goBack" size="small" class="back-button">
+        <template #icon>
+          <LeftOutlined />
+        </template>
+        <span>Back</span>
+      </a-button>
+    </div>
+
+    <div class="page-content">
+      <h1>日本語五十音</h1>
+
+      <a-tabs default-active-key="1">
+        <a-tab-pane key="1" tab="ひらがな">
+          <a-table
+            :data-source="hiraganaData"
+            :columns="[
+              { dataIndex: '0' },
+              { dataIndex: '1' },
+              { dataIndex: '2' },
+              { dataIndex: '3' },
+              { dataIndex: '4' },
+              { dataIndex: '5' },
+              { dataIndex: '6' },
+              { dataIndex: '7' },
+              { dataIndex: '8' },
+              { dataIndex: '9' },
+            ]"
+            :pagination="false"
+            :show-header="false"
+            :row-class-name="(_, index) => index % 2 === 0 ? 'table-row-light' : 'table-row-dark'"
+            row-key="index"
+          />
+        </a-tab-pane>
+        <a-tab-pane key="2" tab="カタカナ">
+          <a-table
+            :data-source="katakanaData"
+            :columns="[
+              { dataIndex: '0' },
+              { dataIndex: '1' },
+              { dataIndex: '2' },
+              { dataIndex: '3' },
+              { dataIndex: '4' },
+              { dataIndex: '5' },
+              { dataIndex: '6' },
+              { dataIndex: '7' },
+              { dataIndex: '8' },
+              { dataIndex: '9' },
+            ]"
+            :pagination="false"
+            :show-header="false"
+            :row-class-name="(_, index) => index % 2 === 0 ? 'table-row-light' : 'table-row-dark'"
+            row-key="index"
+          />
+        </a-tab-pane>
+      </a-tabs>
+    </div>
+
+    <a-back-top />
+  </div>
+</template>
+
+<style lang="less" scoped>
+.japanese-fifty-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  padding-top: 24px;
+  min-height: 60vh;
+}
+
+.header-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.breads {
+  flex: 1;
+}
+
+.back-button {
+  background-color: transparent;
+  border: 1px solid #d9d9d9;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  height: 28px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.45);
+    color: rgba(0, 0, 0, 0.88);
+  }
+}
+
+.page-content {
+  width: 100%;
+  background: white;
+  padding: 32px;
+  border-radius: @border-radius-base;
+  box-shadow: @box-shadow-base;
+  flex-direction: column;
+  gap: 0;
+  overflow-x: hidden;
+  max-width: 100vw;
+
+  h1 {
+    color: #1890ff;
+    margin-bottom: 32px;
+    margin-top: 0;
+    text-align: center;
+    width: 100%;
+    display: block;
+  }
+}
+
+:deep(.table-row-light) {
+  background-color: #fafafa;
+}
+
+:deep(.table-row-dark) {
+  background-color: #ffffff;
+}
+
+:deep(.ant-table-cell) {
+  text-align: center !important;
+  font-size: 16px !important;
+  padding: 8px !important;
+  letter-spacing: normal;
+}
+
+:deep(.ant-table) {
+  font-size: 16px;
+  max-width: 100%;
+  width: auto;
+  margin: 0 auto !important;
+  table-layout: auto;
+}
+
+:deep(.ant-table table) {
+  width: auto !important;
+  max-width: 100%;
+}
+
+:deep(.ant-tabs) {
+  width: 100% !important;
+}
+
+:deep(.ant-tabs-content) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+:deep(.ant-tabs-tabpane) {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+:deep(.ant-spin-nested-loading) {
+  width: 100% !important;
+  display: block !important;
+}
+
+:deep(.ant-spin-container) {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center;
+}
+
+:deep(.ant-table-wrapper) {
+  width: fit-content !important;
+  margin: 0 auto !important;
+}
+
+// Responsive adjustments for smaller screens
+@media (max-width: 1200px) {
+  :deep(.ant-table-cell) {
+    padding: 6px 3px !important;
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  :deep(.ant-table-cell) {
+    padding: 5px 2px !important;
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  :deep(.ant-table-cell) {
+    padding: 4px 2px !important;
+    font-size: 13px !important;
+    letter-spacing: -0.3px !important;
+  }
+
+  :deep(.ant-table) {
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  :deep(.ant-table-cell) {
+    padding: 3px 1.5px !important;
+    font-size: 12px !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  :deep(.ant-table) {
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  :deep(.ant-table-cell) {
+    padding: 2px 1px !important;
+    font-size: 11px !important;
+    letter-spacing: -0.8px !important;
+  }
+
+  :deep(.ant-table) {
+    font-size: 11px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  :deep(.ant-table-cell) {
+    padding: 1px 0.5px !important;
+    font-size: 10px !important;
+    letter-spacing: -1px !important;
+  }
+
+  :deep(.ant-table) {
+    font-size: 10px !important;
+  }
+}
+</style>
