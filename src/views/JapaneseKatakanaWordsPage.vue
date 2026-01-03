@@ -289,7 +289,7 @@ const columns = [
         :data-source="katakanaWords"
         :columns="columns"
         :loading="loading"
-        :pagination="{ pageSize: 20, showSizeChanger: true, showTotal: (total) => `Total ${total} words` }"
+        :pagination="false"
         :row-class-name="(_: any, index: number) => index % 2 === 0 ? 'table-row-light' : 'table-row-dark'"
         :row-key="(record: KatakanaWord) => record.katakana"
       />
