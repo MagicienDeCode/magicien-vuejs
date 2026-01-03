@@ -10,11 +10,15 @@
   :deep(.ant-timeline-item) {
     padding-bottom: 16px;
   }
+
+  :deep(.ant-timeline-item-head) {
+    background-color: @background-color !important;
+  }
 }
 
 .pages-line-text {
   font-size: @font-size-sm;
-  font-weight: 500;
+  font-weight: bold;
   color: @text-color;
 
   &:hover {
@@ -26,6 +30,7 @@
   h2 {
     margin-top: 0;
     padding-top: 0;
+    font-weight: bold;
   }
 
   h2:not(:first-child) {

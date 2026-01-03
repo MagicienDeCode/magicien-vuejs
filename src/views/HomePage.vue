@@ -29,13 +29,6 @@ useMeta({
         </RouterLink>
       </div>
       <div class="home-left-links display-none">
-        <div class="home-left-text">
-          <p>
-            With Experience and Education in the areas of Computer Science, my
-            interest is to continuously improve in the fields of AI/ML and
-            System Design
-          </p>
-        </div>
         <a
           target="_blank"
           href="mailto:xiangli1105@hotmail.com"
@@ -150,41 +143,6 @@ useMeta({
           company, in which the ability to face challenges, recognize and
           rectify mistakes and be tenacious is essential.
         </p>
-      </div>
-      <div class="home-right-divider-bgc" />
-      <div class="home-left-carousel">
-        <a-carousel autoplay>
-          <div class="text-size">
-            <h4>2022 annual appraisal</h4>
-            <p>
-              Xiang has done an excellent year. Xiang took the lead on
-              architecture proposing several scenarios using HLD (High Level
-              Design) methodology/System Design, and moving step by step to
-              the specifics. All the points are discussed with the team before
-              being implemented. Some technical choices were debate and I
-              could see that Xiang did not impose its solution and if the
-              arguments brought by the other team members was making sense, he
-              was able to accept their counter proposal. Technically he is
-              able to check the peers contribution and integrate it quickly in
-              its reasoning. This ability make him quick to spot issues and
-              find solutions/workaround. Again, a very good job in 2022.
-            </p>
-          </div>
-          <div class="text-size">
-            <h4>2023 annual appraisal</h4>
-            <p>
-              Xiang did a very good year. Its contribution helped to build
-              product on time. He has a major contribution in Webhook and
-              SlimCollect products. We can see that Thanks to him and the team
-              we are delivering products which are long due by the company
-              (webhook) in a few months. Xiang handled the changes as a team
-              leader without creating any tension, by respecting its
-              colleagues as equal, and helping them when needed. Please
-              continue like this as 2024 will be the opportunity to build a
-              bigger picture of the company.
-            </p>
-          </div>
-        </a-carousel>
       </div>
     </a-col>
   </a-row>
