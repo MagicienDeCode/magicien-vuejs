@@ -5,9 +5,9 @@ import { useRouter, RouterLink } from 'vue-router'
 import { LeftOutlined, PlayCircleOutlined, PauseCircleOutlined, ReloadOutlined } from '@ant-design/icons-vue'
 
 useHead({
-  title: 'ひらがな単語1 - MagicienDeCode',
+  title: 'ひらがな単語 - MagicienDeCode',
   meta: [
-    { name: 'description', content: 'Japanese Hiragana Words 1 with translations' },
+    { name: 'description', content: 'Japanese Hiragana Words with translations' },
   ],
 })
 
@@ -25,6 +25,17 @@ const loading = ref(true)
 const isPlaying = ref(false)
 const currentPlayingIndex = ref(-1)
 const audioRef = ref<HTMLAudioElement | null>(null)
+
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    const temp = shuffled[i]!
+    shuffled[i] = shuffled[j]!
+    shuffled[j] = temp
+  }
+  return shuffled
+}
 
 const parseCSV = (text: string): HiraganaWord[] => {
   const lines = text.trim().split('\n')
@@ -46,12 +57,12 @@ const parseCSV = (text: string): HiraganaWord[] => {
     }
   }
 
-  return data
+  return shuffleArray(data)
 }
 
 onMounted(async () => {
   try {
-    const response = await fetch('/data/japanese/words/hiragana1.csv')
+    const response = await fetch('/data/japanese/words/hiragana.csv')
     const text = await response.text()
     hiraganaWords.value = parseCSV(text)
   } catch (error) {
@@ -82,7 +93,7 @@ const playNextAudio = () => {
     playNextAudio()
     return
   }
-  const audioPath = `/data/japanese/words/downloads/hiragana1/${word.word}.mp3`
+  const audioPath = `/data/japanese/words/downloads/hiragana/${word.word}.mp3`
 
   if (audioRef.value) {
     audioRef.value.src = audioPath
@@ -145,7 +156,7 @@ const playIndividualWord = (word: HiraganaWord) => {
     pausePlayback()
   }
 
-  const audioPath = `/data/japanese/words/downloads/hiragana1/${word.word}.mp3`
+  const audioPath = `/data/japanese/words/downloads/hiragana/${word.word}.mp3`
 
   if (audioRef.value) {
     audioRef.value.src = audioPath
@@ -206,7 +217,7 @@ const columns = [
         <a-breadcrumb-item>
           <RouterLink to="/articles" class="decoration-none">Articles</RouterLink>
         </a-breadcrumb-item>
-        <a-breadcrumb-item>ひらがな単語1</a-breadcrumb-item>
+        <a-breadcrumb-item>ひらがな単語</a-breadcrumb-item>
       </a-breadcrumb>
 
       <a-button @click="goBack" size="small" class="back-button">
@@ -218,8 +229,8 @@ const columns = [
     </div>
 
     <div class="page-content">
-      <h1>ひらがな単語1</h1>
-      <p class="subtitle">Hiragana Vocabulary 1</p>
+      <h1>ひらがな単語</h1>
+      <p class="subtitle">Hiragana Vocabulary</p>
 
       <!-- Audio Player Section -->
       <div class="audio-player-section">

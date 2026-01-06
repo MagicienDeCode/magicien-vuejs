@@ -5,53 +5,66 @@ import { useRouter, RouterLink } from 'vue-router'
 import { LeftOutlined, PlayCircleOutlined, PauseCircleOutlined, ReloadOutlined } from '@ant-design/icons-vue'
 
 useHead({
-  title: 'カタカナ単語 - MagicienDeCode',
+  title: 'ひらがな単語1 - MagicienDeCode',
   meta: [
-    { name: 'description', content: 'Japanese Katakana Words with translations' },
+    { name: 'description', content: 'Japanese Hiragana Words 1 with translations' },
   ],
 })
 
-interface KatakanaWord {
-  katakana: string
+interface HiraganaWord {
+  word: string
+  hiragana: string
   romaji: string
   english: string
   chinese: string
 }
 
 const router = useRouter()
-const katakanaWords = ref<KatakanaWord[]>([])
+const hiraganaWords = ref<HiraganaWord[]>([])
 const loading = ref(true)
 const isPlaying = ref(false)
 const currentPlayingIndex = ref(-1)
 const audioRef = ref<HTMLAudioElement | null>(null)
 
-const parseCSV = (text: string): KatakanaWord[] => {
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    const temp = shuffled[i]!
+    shuffled[i] = shuffled[j]!
+    shuffled[j] = temp
+  }
+  return shuffled
+}
+
+const parseCSV = (text: string): HiraganaWord[] => {
   const lines = text.trim().split('\n')
-  const data: KatakanaWord[] = []
+  const data: HiraganaWord[] = []
 
   // Skip header row (index 0) and parse data rows
   for (let i = 1; i < lines.length; i++) {
     const line = lines[i]
     if (!line) continue
     const columns = line.split(',').map(col => col.trim())
-    if (columns.length >= 4 && columns[0] && columns[1] && columns[2] && columns[3]) {
+    if (columns.length >= 5 && columns[0] && columns[1] && columns[2] && columns[3] && columns[4]) {
       data.push({
-        katakana: columns[0],
-        romaji: columns[1],
-        english: columns[2],
-        chinese: columns[3],
+        word: columns[0],
+        hiragana: columns[1],
+        romaji: columns[2],
+        english: columns[3],
+        chinese: columns[4],
       })
     }
   }
 
-  return data
+  return shuffleArray(data)
 }
 
 onMounted(async () => {
   try {
-    const response = await fetch('/data/japanese/words/katakana.csv')
+    const response = await fetch('/data/japanese/words/hiragana1.csv')
     const text = await response.text()
-    katakanaWords.value = parseCSV(text)
+    hiraganaWords.value = parseCSV(text)
   } catch (error) {
     console.error('Failed to load CSV file:', error)
   } finally {
@@ -68,19 +81,19 @@ const goBack = () => {
 }
 
 const playNextAudio = () => {
-  if (currentPlayingIndex.value >= katakanaWords.value.length - 1) {
+  if (currentPlayingIndex.value >= hiraganaWords.value.length - 1) {
     // Finished playing all
     stopPlayback()
     return
   }
 
   currentPlayingIndex.value++
-  const word = katakanaWords.value[currentPlayingIndex.value]
+  const word = hiraganaWords.value[currentPlayingIndex.value]
   if (!word) {
     playNextAudio()
     return
   }
-  const audioPath = `/data/japanese/words/downloads/katakana/${word.katakana}.mp3`
+  const audioPath = `/data/japanese/words/downloads/hiragana1/${word.word}.mp3`
 
   if (audioRef.value) {
     audioRef.value.src = audioPath
@@ -93,7 +106,7 @@ const playNextAudio = () => {
 }
 
 const startPlayback = () => {
-  if (katakanaWords.value.length === 0) return
+  if (hiraganaWords.value.length === 0) return
 
   isPlaying.value = true
   currentPlayingIndex.value = -1
@@ -137,13 +150,13 @@ const handleAudioError = () => {
   }
 }
 
-const playIndividualWord = (word: KatakanaWord) => {
+const playIndividualWord = (word: HiraganaWord) => {
   // Pause sequential playback if active
   if (isPlaying.value) {
     pausePlayback()
   }
 
-  const audioPath = `/data/japanese/words/downloads/katakana/${word.katakana}.mp3`
+  const audioPath = `/data/japanese/words/downloads/hiragana1/${word.word}.mp3`
 
   if (audioRef.value) {
     audioRef.value.src = audioPath
@@ -155,41 +168,47 @@ const playIndividualWord = (word: KatakanaWord) => {
 
 const columns = [
   {
-    title: 'カタカナ',
-    dataIndex: 'katakana',
-    key: 'katakana',
-    width: '25%',
-    customRender: ({ text, record }: { text: string; record: KatakanaWord }) => ({
+    title: 'Word',
+    dataIndex: 'word',
+    key: 'word',
+    width: '20%',
+    customRender: ({ text, record }: { text: string; record: HiraganaWord }) => ({
       children: text,
       props: {
-        class: 'clickable-katakana',
+        class: 'clickable-word',
         onClick: () => playIndividualWord(record)
       }
     })
   },
   {
+    title: 'ひらがな',
+    dataIndex: 'hiragana',
+    key: 'hiragana',
+    width: '20%',
+  },
+  {
     title: 'Romaji',
     dataIndex: 'romaji',
     key: 'romaji',
-    width: '25%',
+    width: '20%',
   },
   {
     title: 'English',
     dataIndex: 'english',
     key: 'english',
-    width: '25%',
+    width: '20%',
   },
   {
     title: '中文',
     dataIndex: 'chinese',
     key: 'chinese',
-    width: '25%',
+    width: '20%',
   },
 ]
 </script>
 
 <template>
-  <div class="katakana-words-page">
+  <div class="hiragana-words-page">
     <div class="header-row">
       <a-breadcrumb separator=">" class="breads">
         <a-breadcrumb-item>
@@ -198,7 +217,7 @@ const columns = [
         <a-breadcrumb-item>
           <RouterLink to="/articles" class="decoration-none">Articles</RouterLink>
         </a-breadcrumb-item>
-        <a-breadcrumb-item>カタカナ単語</a-breadcrumb-item>
+        <a-breadcrumb-item>ひらがな単語1</a-breadcrumb-item>
       </a-breadcrumb>
 
       <a-button @click="goBack" size="small" class="back-button">
@@ -210,8 +229,8 @@ const columns = [
     </div>
 
     <div class="page-content">
-      <h1>カタカナ単語</h1>
-      <p class="subtitle">Katakana Vocabulary</p>
+      <h1>ひらがな単語1</h1>
+      <p class="subtitle">Hiragana Vocabulary 1</p>
 
       <!-- Audio Player Section -->
       <div class="audio-player-section">
@@ -221,7 +240,7 @@ const columns = [
             type="primary"
             size="large"
             @click="startPlayback"
-            :disabled="loading || katakanaWords.length === 0"
+            :disabled="loading || hiraganaWords.length === 0"
           >
             <template #icon>
               <PlayCircleOutlined />
@@ -257,26 +276,27 @@ const columns = [
         <div v-if="currentPlayingIndex >= 0" class="current-playing">
           <div class="playing-header">
             <span class="playing-label">Now Playing:</span>
-            <span class="playing-progress">{{ currentPlayingIndex + 1 }} / {{ katakanaWords.length }}</span>
+            <span class="playing-progress">{{ currentPlayingIndex + 1 }} / {{ hiraganaWords.length }}</span>
           </div>
           <div class="playing-content">
             <div class="playing-main">
-              <span class="playing-word">{{ katakanaWords[currentPlayingIndex]?.katakana }}</span>
-              <span class="playing-romaji">{{ katakanaWords[currentPlayingIndex]?.romaji }}</span>
+              <span class="playing-word-orig">{{ hiraganaWords[currentPlayingIndex]?.word }}</span>
+              <span class="playing-word">{{ hiraganaWords[currentPlayingIndex]?.hiragana }}</span>
+              <span class="playing-romaji">{{ hiraganaWords[currentPlayingIndex]?.romaji }}</span>
             </div>
             <div class="playing-translations">
               <span class="playing-english">
                 <span class="translation-label">English:</span>
-                {{ katakanaWords[currentPlayingIndex]?.english }}
+                {{ hiraganaWords[currentPlayingIndex]?.english }}
               </span>
               <span class="playing-chinese">
                 <span class="translation-label">中文:</span>
-                {{ katakanaWords[currentPlayingIndex]?.chinese }}
+                {{ hiraganaWords[currentPlayingIndex]?.chinese }}
               </span>
             </div>
           </div>
           <a-progress
-            :percent="Math.round(((currentPlayingIndex + 1) / katakanaWords.length) * 100)"
+            :percent="Math.round(((currentPlayingIndex + 1) / hiraganaWords.length) * 100)"
             :show-info="false"
             stroke-color="#1890ff"
           />
@@ -292,12 +312,12 @@ const columns = [
       </div>
 
       <a-table
-        :data-source="katakanaWords"
+        :data-source="hiraganaWords"
         :columns="columns"
         :loading="loading"
         :pagination="false"
         :row-class-name="(_: any, index: number) => index % 2 === 0 ? 'table-row-light' : 'table-row-dark'"
-        :row-key="(record: KatakanaWord) => record.katakana"
+        :row-key="(record: HiraganaWord) => record.word"
       />
     </div>
 
@@ -306,7 +326,7 @@ const columns = [
 </template>
 
 <style lang="less" scoped>
-.katakana-words-page {
+.hiragana-words-page {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -441,6 +461,13 @@ const columns = [
   gap: 8px;
 }
 
+.playing-word-orig {
+  font-size: 24px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.85);
+  line-height: 1.2;
+}
+
 .playing-word {
   font-size: 32px;
   font-weight: 700;
@@ -506,7 +533,7 @@ const columns = [
   padding: 12px 8px !important;
 }
 
-:deep(.clickable-katakana) {
+:deep(.clickable-word) {
   cursor: pointer;
   color: #1890ff;
   font-weight: 600;
@@ -639,7 +666,7 @@ const columns = [
     font-size: 14px;
   }
 
-  :deep(.clickable-katakana:hover) {
+  :deep(.clickable-word:hover) {
     transform: scale(1.05);
   }
 }
@@ -700,15 +727,15 @@ const columns = [
     font-size: 11px;
   }
 
-  :deep(.clickable-katakana) {
+  :deep(.clickable-word) {
     font-size: 13px !important;
   }
 
-  :deep(.clickable-katakana:hover) {
+  :deep(.clickable-word:hover) {
     transform: scale(1.03);
   }
 
-  :deep(.clickable-katakana:hover::after) {
+  :deep(.clickable-word:hover::after) {
     font-size: 10px;
   }
 }
