@@ -115,7 +115,7 @@ const spin = () => {
   // Show result after animation completes
   setTimeout(() => {
     isSpinning.value = false
-    result.value = options[randomIndex]
+    result.value = options[randomIndex] || ''
   }, duration * 1000)
 }
 </script>
