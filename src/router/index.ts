@@ -19,6 +19,11 @@ const router = createRouter({
       component: () => import('../views/projects/ProjectsPage.vue'),
     },
     {
+      path: '/ilun',
+      name: 'ilun',
+      component: () => import('../views/ilun/IlunPage.vue'),
+    },
+    {
       path: '/articles',
       name: 'articles',
       component: () => import('../views/articles/ArticlesPage.vue'),

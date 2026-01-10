@@ -24,7 +24,7 @@ useMeta({
         </RouterLink>
       </div>
       <div class="home-left-name">
-        <RouterLink to="/">
+        <RouterLink to="/ilun">
           <p>LI Xiang - 李 想</p>
         </RouterLink>
       </div>
