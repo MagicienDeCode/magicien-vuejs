@@ -28,8 +28,13 @@
     },
     {
       "title": "文法",
-      "page": "japanese/wenfa",
+      "page": "japanese/grammar/wenfa",
       "creationDate": "2025-05-26"
+    },
+    {
+      "title": "文法2",
+      "page": "japanese/grammar/wenfa2",
+      "creationDate": "2025-05-27"
     },
     {
       "title": "日语单词*类别",

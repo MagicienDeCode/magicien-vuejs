@@ -1,33 +1,41 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
-const markdownModules = import.meta.glob('@/data/**/*.md', { query: '?raw', import: 'default', eager: false })
-const jsonModules = import.meta.glob('@/data/**/title.json', { eager: false })
+const categories = ['book', 'chinese', 'code', 'english', 'french', 'japanese']
+const categoryData = ref<Record<string, any>>({})
+const loadingStatus = ref<string>('Loading...')
 
-const markdownKeys = ref<string[]>([])
-const jsonKeys = ref<string[]>([])
-
-onMounted(() => {
-  markdownKeys.value = Object.keys(markdownModules)
-  jsonKeys.value = Object.keys(jsonModules)
-  console.log('Markdown module keys:', markdownKeys.value)
-  console.log('JSON module keys:', jsonKeys.value)
+onMounted(async () => {
+  try {
+    for (const category of categories) {
+      const response = await fetch(`/data/${category}/title.json`)
+      if (response.ok) {
+        const data = await response.json()
+        categoryData.value[category] = data
+      }
+    }
+    loadingStatus.value = 'Loaded successfully'
+    console.log('Category data:', categoryData.value)
+  } catch (error) {
+    loadingStatus.value = `Error: ${error}`
+    console.error('Failed to load category data:', error)
+  }
 })
 </script>
 
 <template>
   <div class="debug-page">
-    <h1>Debug: Available Modules</h1>
+    <h1>Debug: Available Data from /public/data</h1>
+    <p>Status: {{ loadingStatus }}</p>
 
-    <h2>Markdown Files ({{ markdownKeys.length }})</h2>
-    <ul>
-      <li v-for="key in markdownKeys" :key="key">{{ key }}</li>
-    </ul>
-
-    <h2>JSON Files ({{ jsonKeys.length }})</h2>
-    <ul>
-      <li v-for="key in jsonKeys" :key="key">{{ key }}</li>
-    </ul>
+    <div v-for="(data, category) in categoryData" :key="category">
+      <h2>{{ category }} ({{ data.children?.length || 0 }} articles)</h2>
+      <ul>
+        <li v-for="article in data.children" :key="article.page">
+          <strong>{{ article.title }}</strong> - {{ article.page }} ({{ article.creationDate }})
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 

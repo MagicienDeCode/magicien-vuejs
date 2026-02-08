@@ -1,5 +1,3 @@
-import { ref, computed } from 'vue'
-
 export interface ArticleMetadata {
   title: string
   page: string
@@ -11,10 +9,6 @@ export interface ArticleCategory {
   children: ArticleMetadata[]
 }
 
-// Pre-load all markdown files using Vite's glob import
-const markdownModules = import.meta.glob('@/data/**/*.md', { query: '?raw', import: 'default', eager: false })
-const jsonModules = import.meta.glob('@/data/**/title.json', { eager: false })
-
 /**
  * Composable for managing article data
  */
@@ -22,16 +16,16 @@ export function useArticles() {
   // Load all article metadata
   const loadArticleMetadata = async (category: string): Promise<ArticleCategory> => {
     try {
-      const moduleKey = `/src/data/${category}/title.json`
+      const response = await fetch(`/data/${category}/title.json`)
 
-      if (!jsonModules[moduleKey]) {
+      if (!response.ok) {
         console.error(`No metadata found for category: ${category}`)
-        console.error(`Expected module key: ${moduleKey}`)
+        console.error(`Response status: ${response.status}`)
         return { type: category, children: [] }
       }
 
-      const module = await jsonModules[moduleKey]()
-      return (module as any).default || module
+      const data = await response.json()
+      return data as ArticleCategory
     } catch (error) {
       console.error(`Failed to load metadata for category: ${category}`, error)
       return { type: category, children: [] }
@@ -43,20 +37,17 @@ export function useArticles() {
     try {
       console.log('Looking for markdown path:', path)
 
-      // Construct the exact module key that Vite generates
-      const moduleKey = `/src/data/${path}.md`
-      console.log('Looking for module key:', moduleKey)
+      const response = await fetch(`/data/${path}.md`)
 
-      if (!markdownModules[moduleKey]) {
+      if (!response.ok) {
         console.error(`No markdown file found for path: ${path}`)
-        console.error(`Expected module key: ${moduleKey}`)
-        console.error('Available keys:', Object.keys(markdownModules))
+        console.error(`Response status: ${response.status}`)
         return ''
       }
 
-      const content = await markdownModules[moduleKey]()
+      const content = await response.text()
       console.log('Successfully loaded markdown')
-      return content as string
+      return content
     } catch (error) {
       console.error(`Failed to load markdown: ${path}`, error)
       return ''

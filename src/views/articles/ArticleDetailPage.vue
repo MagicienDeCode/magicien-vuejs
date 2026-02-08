@@ -15,8 +15,14 @@ const articleTitle = ref('')
 const loading = ref(true)
 const error = ref(false)
 
-const category = computed(() => route.params.category as string)
-const slug = computed(() => route.params.slug as string)
+// Extract the full path after /articles/
+const articlePath = computed(() => {
+  const pathMatch = route.params.pathMatch
+  if (Array.isArray(pathMatch)) {
+    return pathMatch.join('/')
+  }
+  return pathMatch as string
+})
 
 // Set up reactive meta tags
 useHead({
@@ -29,13 +35,12 @@ useHead({
 onMounted(async () => {
   try {
     loading.value = true
-    const path = `${category.value}/${slug.value}`
-    const rawMarkdown = await loadMarkdownContent(path)
+    const rawMarkdown = await loadMarkdownContent(articlePath.value)
 
     if (rawMarkdown) {
       const parsed = parseMarkdown(rawMarkdown)
       markdownContent.value = parsed.content
-      articleTitle.value = parsed.data.title || slug.value
+      articleTitle.value = parsed.data.title || articlePath.value.split('/').pop() || 'Article'
     } else {
       error.value = true
     }

@@ -69,7 +69,7 @@ const router = createRouter({
       component: () => import('../views/articles/chinese/GushiwenExtraPage.vue'),
     },
     {
-      path: '/articles/:category/:slug',
+      path: '/articles/:pathMatch(.*)*',
       name: 'article-detail',
       component: () => import('../views/articles/ArticleDetailPage.vue'),
     },
