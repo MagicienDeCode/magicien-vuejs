@@ -64,7 +64,7 @@ onMounted(async () => {
               <a-timeline-item color="grey">
                 <template #dot>
                   <a-badge>
-                    <a-avatar src="/book.png" :size="20" />
+                    <a-avatar src="/images/book.png" :size="20" />
                   </a-badge>
                 </template>
                 <a href="#book" class="decoration-none">
@@ -74,7 +74,7 @@ onMounted(async () => {
               <a-timeline-item color="grey">
                 <template #dot>
                   <a-badge>
-                    <a-avatar src="/star.png" :size="20" />
+                    <a-avatar src="/images/star.png" :size="20" />
                   </a-badge>
                 </template>
                 <a href="#code" class="decoration-none">
@@ -84,7 +84,7 @@ onMounted(async () => {
               <a-timeline-item color="grey">
                 <template #dot>
                   <a-badge>
-                    <a-avatar src="/zh.png" :size="20" />
+                    <a-avatar src="/images/zh.png" :size="20" />
                   </a-badge>
                 </template>
                 <a href="#zh" class="decoration-none">
@@ -94,7 +94,7 @@ onMounted(async () => {
               <a-timeline-item color="grey">
                 <template #dot>
                   <a-badge>
-                    <a-avatar src="/ja.png" :size="20" />
+                    <a-avatar src="/images/ja.png" :size="20" />
                   </a-badge>
                 </template>
                 <a href="#ja" class="decoration-none">
@@ -104,7 +104,7 @@ onMounted(async () => {
               <a-timeline-item color="grey">
                 <template #dot>
                   <a-badge>
-                    <a-avatar src="/uk.png" :size="20" />
+                    <a-avatar src="/images/uk.png" :size="20" />
                   </a-badge>
                 </template>
                 <a href="#uk" class="decoration-none">
@@ -114,7 +114,7 @@ onMounted(async () => {
               <a-timeline-item color="grey">
                 <template #dot>
                   <a-badge>
-                    <a-avatar src="/de.png" :size="20" />
+                    <a-avatar src="/images/de.png" :size="20" />
                   </a-badge>
                 </template>
                 <a href="#de" class="decoration-none">
@@ -124,7 +124,7 @@ onMounted(async () => {
               <a-timeline-item color="grey">
                 <template #dot>
                   <a-badge>
-                    <a-avatar src="/fr.png" :size="20" />
+                    <a-avatar src="/images/fr.png" :size="20" />
                   </a-badge>
                 </template>
                 <a href="#fr" class="decoration-none">
@@ -140,7 +140,7 @@ onMounted(async () => {
           <div>
             <a-divider orientation="left">
               <div class="exp-head">
-                <img alt="recent" class="company-icon" src="/recent.png" />
+                <img alt="recent" class="company-icon" src="/images/recent.png" />
                 <span class="text-link">RECENT</span>
               </div>
             </a-divider>
@@ -155,7 +155,7 @@ onMounted(async () => {
             <h2 id="book"></h2>
             <a-divider orientation="left">
               <div class="exp-head">
-                <img alt="book" class="company-icon" src="/book.png" />
+                <img alt="book" class="company-icon" src="/images/book.png" />
                 <span class="text-link">BOOK</span>
               </div>
             </a-divider>
@@ -169,7 +169,7 @@ onMounted(async () => {
             <h2 id="code"></h2>
             <a-divider orientation="left">
               <div class="exp-head">
-                <img alt="code" class="company-icon" src="/algo.png" />
+                <img alt="code" class="company-icon" src="/images/algo.png" />
                 <span class="text-link">CODE</span>
               </div>
             </a-divider>
@@ -183,7 +183,7 @@ onMounted(async () => {
             <h2 id="zh"></h2>
             <a-divider orientation="left">
               <div class="exp-head">
-                <img alt="chinese" class="company-icon" src="/zh.png" />
+                <img alt="chinese" class="company-icon" src="/images/zh.png" />
                 <span class="text-link">CHINESE</span>
               </div>
             </a-divider>
@@ -197,7 +197,7 @@ onMounted(async () => {
             <h2 id="ja"></h2>
             <a-divider orientation="left">
               <div class="exp-head">
-                <img alt="japanese" class="company-icon" src="/ja.png" />
+                <img alt="japanese" class="company-icon" src="/images/ja.png" />
                 <span class="text-link">JAPANESE</span>
               </div>
             </a-divider>
@@ -211,7 +211,7 @@ onMounted(async () => {
             <h2 id="uk"></h2>
             <a-divider orientation="left">
               <div class="exp-head">
-                <img alt="english" class="company-icon" src="/uk.png" />
+                <img alt="english" class="company-icon" src="/images/uk.png" />
                 <span class="text-link">ENGLISH</span>
               </div>
             </a-divider>
@@ -225,7 +225,7 @@ onMounted(async () => {
             <h2 id="de"></h2>
             <a-divider orientation="left">
               <div class="exp-head">
-                <img alt="german" class="company-icon" src="/de.png" />
+                <img alt="german" class="company-icon" src="/images/de.png" />
                 <span class="text-link">GERMAN</span>
               </div>
             </a-divider>
@@ -234,7 +234,7 @@ onMounted(async () => {
             <h2 id="fr"></h2>
             <a-divider orientation="left">
               <div class="exp-head">
-                <img alt="french" class="company-icon" src="/fr.png" />
+                <img alt="french" class="company-icon" src="/images/fr.png" />
                 <span class="text-link">FRENCH</span>
               </div>
             </a-divider>

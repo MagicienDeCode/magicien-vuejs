@@ -82,7 +82,7 @@ const educationCJZF = [
               <a-timeline-item color="grey">
                 <template #dot>
                   <a-badge>
-                    <a-avatar src="/icon_resume.png" :size="20" />
+                    <a-avatar src="/images/icon_resume.png" :size="20" />
                   </a-badge>
                 </template>
                 <a href="#basic-info" class="decoration-none">
@@ -92,7 +92,7 @@ const educationCJZF = [
               <a-timeline-item color="grey">
                 <template #dot>
                   <a-badge>
-                    <a-avatar src="/tools.png" :size="20" />
+                    <a-avatar src="/images/tools.png" :size="20" />
                   </a-badge>
                 </template>
                 <a href="#skills" class="decoration-none">
@@ -102,7 +102,7 @@ const educationCJZF = [
               <a-timeline-item color="grey">
                 <template #dot>
                   <a-badge>
-                    <a-avatar src="/exp.png" :size="20" />
+                    <a-avatar src="/images/exp.png" :size="20" />
                   </a-badge>
                 </template>
                 <a href="#experience" class="decoration-none">
@@ -112,7 +112,7 @@ const educationCJZF = [
               <a-timeline-item color="grey">
                 <template #dot>
                   <a-badge>
-                    <a-avatar src="/education.png" :size="20" />
+                    <a-avatar src="/images/education.png" :size="20" />
                   </a-badge>
                 </template>
                 <a href="#education" class="decoration-none">
@@ -136,7 +136,7 @@ const educationCJZF = [
               <a-col :flex="1" class="basic-info-left-col">
                 <RouterLink to="/" class="decoration-none">
                   <a-badge>
-                    <a-avatar src="/xiang2.jpg" class="pages-xiang-avatar" />
+                    <a-avatar src="/images/xiang2.jpg" class="pages-xiang-avatar" />
                   </a-badge>
                 </RouterLink>
               </a-col>
@@ -161,7 +161,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/java.png" />
+                    <a-avatar src="/images/java.png" />
                   </a-badge>
                   <span class="skill-title">Java</span>
                 </a-flex>
@@ -169,7 +169,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/kotlin.png" />
+                    <a-avatar src="/images/kotlin.png" />
                   </a-badge>
                   <span class="skill-title">Kotlin</span>
                 </a-flex>
@@ -177,7 +177,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/python.png" />
+                    <a-avatar src="/images/python.png" />
                   </a-badge>
                   <span class="skill-title">Python</span>
                 </a-flex>
@@ -189,7 +189,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/spring-boot.png" />
+                    <a-avatar src="/images/spring-boot.png" />
                   </a-badge>
                   <span class="skill-title">SpringBoot</span>
                 </a-flex>
@@ -197,7 +197,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/axon.png" />
+                    <a-avatar src="/images/axon.png" />
                   </a-badge>
                   <span class="skill-title">Axon CQRS</span>
                 </a-flex>
@@ -205,7 +205,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/Kafka.png" />
+                    <a-avatar src="/images/Kafka.png" />
                   </a-badge>
                   <span class="skill-title">Kafka</span>
                 </a-flex>
@@ -216,7 +216,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/gatsbyjs.png" />
+                    <a-avatar src="/images/gatsbyjs.png" />
                   </a-badge>
                   <span class="skill-title">GatsbyJs</span>
                 </a-flex>
@@ -224,7 +224,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/angular2.png" />
+                    <a-avatar src="/images/angular2.png" />
                   </a-badge>
                   <span class="skill-title">Angular</span>
                 </a-flex>
@@ -232,7 +232,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/react.png" />
+                    <a-avatar src="/images/react.png" />
                   </a-badge>
                   <span class="skill-title">React</span>
                 </a-flex>
@@ -243,7 +243,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/gradlekts.png" />
+                    <a-avatar src="/images/gradlekts.png" />
                   </a-badge>
                   <span class="skill-title">Gradle</span>
                 </a-flex>
@@ -251,7 +251,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/maven.png" />
+                    <a-avatar src="/images/maven.png" />
                   </a-badge>
                   <span class="skill-title">Maven</span>
                 </a-flex>
@@ -259,7 +259,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/docker.png" />
+                    <a-avatar src="/images/docker.png" />
                   </a-badge>
                   <span class="skill-title">Docker</span>
                 </a-flex>
@@ -271,7 +271,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/PostgreSQL.png" />
+                    <a-avatar src="/images/PostgreSQL.png" />
                   </a-badge>
                   <span class="skill-title">MySQL / PostgreSQL</span>
                 </a-flex>
@@ -279,7 +279,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/dynamodb.png" />
+                    <a-avatar src="/images/dynamodb.png" />
                   </a-badge>
                   <span class="skill-title">Dynamo DB</span>
                 </a-flex>
@@ -287,7 +287,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/mongodb.png" />
+                    <a-avatar src="/images/mongodb.png" />
                   </a-badge>
                   <span class="skill-title">Mongo DB</span>
                 </a-flex>
@@ -299,7 +299,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/bank.png" />
+                    <a-avatar src="/images/bank.png" />
                   </a-badge>
                   <span class="skill-title">Open banking PIS/AIS</span>
                 </a-flex>
@@ -307,7 +307,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/european.png" />
+                    <a-avatar src="/images/european.png" />
                   </a-badge>
                   <span class="skill-title">SEPA SDD/SCT (instant)</span>
                 </a-flex>
@@ -315,7 +315,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/Euro.png" />
+                    <a-avatar src="/images/Euro.png" />
                   </a-badge>
                   <span class="skill-title">Balance</span>
                 </a-flex>
@@ -326,7 +326,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/ml.png" />
+                    <a-avatar src="/images/ml.png" />
                   </a-badge>
                   <span class="skill-title">Machine Learning</span>
                 </a-flex>
@@ -334,7 +334,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/leetcode.png" />
+                    <a-avatar src="/images/leetcode.png" />
                   </a-badge>
                   <span class="skill-title">Algorithm</span>
                 </a-flex>
@@ -342,7 +342,7 @@ const educationCJZF = [
               <a-col class="gutter-row" :xs="12" :sm="12" :md="8" :lg="8">
                 <a-flex align="center" gap="small">
                   <a-badge class="skill-badge">
-                    <a-avatar src="/kaggle.png" />
+                    <a-avatar src="/images/kaggle.png" />
                   </a-badge>
                   <span class="skill-title">Kaggle</span>
                 </a-flex>
@@ -356,7 +356,7 @@ const educationCJZF = [
             <h2 id="experience">EXPERIENCE</h2>
             <a-divider orientation="left">
               <div class="exp-head">
-                <img alt="slimpay" class="company-icon" src="/slimpay.jpg" />
+                <img alt="slimpay" class="company-icon" src="/images/slimpay.jpg" />
                 <a target="_blank" href="https://www.slimpay.com/">
                   <span class="text-link">Slimpay</span>
                 </a>
@@ -390,7 +390,7 @@ const educationCJZF = [
 
             <a-divider orientation="left">
               <div class="exp-head">
-                <img alt="monbanquet.fr" class="company-icon" src="/mb.jpg" />
+                <img alt="monbanquet.fr" class="company-icon" src="/images/mb.jpg" />
                 <a target="_blank" href="https://monbanquet.fr/">
                   <span class="text-link">Monbanque.fr</span>
                 </a>
@@ -427,7 +427,7 @@ const educationCJZF = [
             <h2 id="education">EDUCATION</h2>
             <a-divider orientation="left" class="divider-black">
               <div class="exp-head">
-                <img alt="paris-diderot" class="company-icon-p7" src="/p72.png" />
+                <img alt="paris-diderot" class="company-icon-p7" src="/images/p72.png" />
                 <span class="text-link display-none">
                   University of Paris-Diderot
                 </span>
@@ -447,7 +447,7 @@ const educationCJZF = [
 
             <a-divider orientation="left">
               <div class="exp-head">
-                <img alt="paris-diderot" class="company-icon-p7" src="/p72.png" />
+                <img alt="paris-diderot" class="company-icon-p7" src="/images/p72.png" />
                 <span class="text-link display-none">
                   University of Paris-Diderot
                 </span>
@@ -470,7 +470,7 @@ const educationCJZF = [
                 <img
                   alt="henancaijingzhengfa"
                   class="company-icon"
-                  src="/cjzf.png"
+                  src="/images/cjzf.png"
                 />
                 <span class="text-link display-none">
                   Henan University of Economics and Law

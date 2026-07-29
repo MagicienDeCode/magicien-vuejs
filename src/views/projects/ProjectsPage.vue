@@ -23,7 +23,7 @@ useMeta({
               <a-timeline-item color="grey">
                 <template #dot>
                   <a-badge>
-                    <a-avatar src="/github.png" :size="20" />
+                    <a-avatar src="/images/github.png" :size="20" />
                   </a-badge>
                 </template>
                 <a href="#github" class="decoration-none">
@@ -33,7 +33,7 @@ useMeta({
               <a-timeline-item color="grey">
                 <template #dot>
                   <a-badge>
-                    <a-avatar src="/ml.png" :size="20" />
+                    <a-avatar src="/images/ml.png" :size="20" />
                   </a-badge>
                 </template>
                 <a href="#machine-learning" class="decoration-none">
@@ -43,7 +43,7 @@ useMeta({
               <a-timeline-item color="grey">
                 <template #dot>
                   <a-badge>
-                    <a-avatar src="/algo.png" :size="20" />
+                    <a-avatar src="/images/algo.png" :size="20" />
                   </a-badge>
                 </template>
                 <a href="#algorithm" class="decoration-none">
@@ -53,7 +53,7 @@ useMeta({
               <a-timeline-item color="grey">
                 <template #dot>
                   <a-badge>
-                    <a-avatar src="/other.png" :size="20" />
+                    <a-avatar src="/images/other.png" :size="20" />
                   </a-badge>
                 </template>
                 <a href="#others" class="decoration-none">
@@ -76,7 +76,7 @@ useMeta({
               <a-col :flex="1" class="basic-info-left-col">
                 <RouterLink to="/" class="decoration-none">
                   <a-badge>
-                    <a-avatar src="/xiang3.jpg" class="pages-xiang-avatar" />
+                    <a-avatar src="/images/xiang3.jpg" class="pages-xiang-avatar" />
                   </a-badge>
                 </RouterLink>
               </a-col>
@@ -90,7 +90,7 @@ useMeta({
                 <img
                   alt="machine-learning"
                   class="company-icon"
-                  src="/ml.png"
+                  src="/images/ml.png"
                 />
                 <a
                   target="_blank"
@@ -117,7 +117,7 @@ useMeta({
           <h2 id="algorithm">ALGORITHM</h2>
           <a-divider orientation="left">
             <div class="exp-head">
-              <img alt="python" class="company-icon" src="/python.png" />
+              <img alt="python" class="company-icon" src="/images/python.png" />
               <a
                 target="_blank"
                 href="https://github.com/MagicienDeCode/py3_interview"
@@ -139,7 +139,7 @@ useMeta({
 
           <a-divider orientation="left">
             <div class="exp-head">
-              <img alt="java" class="company-icon" src="/SQL.png" />
+              <img alt="java" class="company-icon" src="/images/SQL.png" />
               <a
                 target="_blank"
                 href="https://github.com/MagicienDeCode/SQL-ALL-IN-ONE"
@@ -163,7 +163,7 @@ useMeta({
               <img
                 alt="mdc"
                 class="company-icon"
-                src="/gatsbyjs-logo.png"
+                src="/images/gatsbyjs-logo.png"
               />
               <a
                 target="_blank"

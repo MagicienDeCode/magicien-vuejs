@@ -17,7 +17,7 @@ useMeta({
           <a-badge>
             <a-avatar
               size="small"
-              src="/xiang4.jpg"
+              src="/images/xiang4.jpg"
               class="xiang-avatar"
             />
           </a-badge>
@@ -36,7 +36,7 @@ useMeta({
         >
           <a-row class="home-row">
             <a-col>
-              <img alt="email" class="home-img" src="/email.png" />
+              <img alt="email" class="home-img" src="/images/email.png" />
             </a-col>
             <a-col>
               <span class="text-link"> Email </span>
@@ -50,7 +50,7 @@ useMeta({
         >
           <a-row class="home-row">
             <a-col>
-              <img alt="linkedin" class="home-img" src="/linkedin.png" />
+              <img alt="linkedin" class="home-img" src="/images/linkedin.png" />
             </a-col>
             <a-col>
               <span class="text-link"> Linkedin </span>
@@ -64,7 +64,7 @@ useMeta({
         >
           <a-row class="home-row">
             <a-col>
-              <img alt="github" class="home-img" src="/github.png" />
+              <img alt="github" class="home-img" src="/images/github.png" />
             </a-col>
             <a-col>
               <span class="text-link"> Github </span>
@@ -78,7 +78,7 @@ useMeta({
         >
           <a-row class="home-row">
             <a-col>
-              <img alt="youtube" class="home-img" src="/youtube.png" />
+              <img alt="youtube" class="home-img" src="/images/youtube.png" />
             </a-col>
             <a-col>
               <span class="text-link"> Youtube </span>
@@ -92,7 +92,7 @@ useMeta({
         >
           <a-row class="home-row">
             <a-col>
-              <img alt="leetcode" class="home-img" src="/leetcode.png" />
+              <img alt="leetcode" class="home-img" src="/images/leetcode.png" />
             </a-col>
             <a-col>
               <span class="text-link"> Leetcode </span>
@@ -106,7 +106,7 @@ useMeta({
         >
           <a-row class="home-row">
             <a-col>
-              <img alt="bilibili" class="home-img" src="/bilibili.png" />
+              <img alt="bilibili" class="home-img" src="/images/bilibili.png" />
             </a-col>
             <a-col>
               <span class="text-link"> Bilibili </span>

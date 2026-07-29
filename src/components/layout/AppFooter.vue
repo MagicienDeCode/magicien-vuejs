@@ -14,7 +14,7 @@ const currentYear = new Date().getFullYear()
           <a-flex justify="center" align="center">
             <img
               alt="linkedin"
-              src="/linkedin.png"
+              src="/images/linkedin.png"
               class="footer-div-img"
             />
             <span class="footer-div-span">LINKEDIN</span>
@@ -30,7 +30,7 @@ const currentYear = new Date().getFullYear()
           <a-flex justify="center" align="center">
             <img
               alt="github"
-              src="/github.png"
+              src="/images/github.png"
               class="footer-div-img"
             />
             <span class="footer-div-span">GITHUB</span>
@@ -46,7 +46,7 @@ const currentYear = new Date().getFullYear()
           <a-flex justify="center" align="center">
             <img
               alt="youtube"
-              src="/youtube.png"
+              src="/images/youtube.png"
               class="footer-div-img"
             />
             <span class="footer-div-span">YOUTUBE</span>
@@ -62,7 +62,7 @@ const currentYear = new Date().getFullYear()
           <a-flex justify="center" align="center">
             <img
               alt="bilibili"
-              src="/bilibili.png"
+              src="/images/bilibili.png"
               class="footer-div-img"
             />
             <span class="footer-div-span">BILIBILI</span>
@@ -78,7 +78,7 @@ const currentYear = new Date().getFullYear()
           <a-flex justify="center" align="center">
             <img
               alt="leetcode"
-              src="/leetcode.png"
+              src="/images/leetcode.png"
               class="footer-div-img"
             />
             <span class="footer-div-span">LEETCODE</span>
