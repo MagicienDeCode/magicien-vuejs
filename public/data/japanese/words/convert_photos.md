@@ -106,8 +106,14 @@ Notes:
 
    A clean run prints `=======> Duplicate check completed.` with no
    `Duplicate found` lines.
-7. (Optional) Generate audio for the new words:
+7. Generate audio for the new words (run this after every conversion, once the
+   duplicate check is clean):
 
    ```bash
+   source /Users/xiangli/.venvs/p3env/bin/activate   # env with the TTS deps (alias: activep3)
    python download.py
    ```
+
+   `download.py` skips words that already have an audio file, so it only
+   downloads the newly added rows. A successful run ends with
+   `=======> All files processed.`
