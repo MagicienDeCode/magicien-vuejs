@@ -1,74 +1,101 @@
 word, 平仮名, hiragana, english, chinese
-うち, うち, uchi, home; my place, 家
-切符, きっぷ, kippu, ticket, 票
-記念品, きねんひん, kinenhin, souvenir, 纪念品
-写真集, しゃしんしゅう, shashinshuu, photo album, 相册
-花屋, はなや, hanaya, flower shop, 花店
-お金, おかね, okane, money, 钱
-宿題, しゅくだい, shukudai, homework, 作业
-航空便, こうくうびん, koukuubin, airmail, 航空邮件
-速達, そくたつ, sokutatsu, express mail, 快递
-電話番号, でんわばんごう, denwabangou, phone number, 电话号码
-住所, じゅうしょ, juusho, address, 地址
-名前, なまえ, namae, name, 名字
-事件, じけん, jiken, incident; case, 事件
-新聞紙, しんぶんし, shinbunshi, newspaper, 报纸
-紙飛行機, かみひこうき, kamihikouki, paper airplane, 纸飞机
-小麦粉, こむぎこ, komugiko, flour, 面粉
-はし, はし, hashi, chopsticks, 筷子
-お箸, おはし, ohashi, chopsticks (polite), 筷子（礼貌）
-夕方, ゆうがた, yuugata, evening, 傍晚
-昼休み, ひるやすみ, hiruyasumi, lunch break, 午休
-送ります, おくります, okurimasu, to send, 发送
-作ります, つくります, tsukurimasu, to make; to produce, 制作
-太ります, ふとります, futorimasu, to gain weight, 增重
-痩せます, やせます, yasemasu, to lose weight, 减肥
-結婚します, けっこんします, kekkonshimasu, to get married, 结婚
-卒業します, そつぎょうします, sotsugyoushimasu, to graduate, 毕业
-届きます, とどきます, todokimasu, to be delivered, 被送达
-描きます, かきます, kakimasu, to draw; to paint, 画
-貸します, かします, kashimasu, to lend; to rent, 借出
-借ります, かります, karimasu, to borrow; to rent, 借入
-習います, ならいます, naraimasu, to learn, 学习
-教えます, おしえます, oshiemasu, to teach; to tell, 教; 告诉
-忘れます, わすれます, wasuremasu, to forget; to leave behind, 忘记; 留下
-かけます, かけます, kakemasu, to hang; to put on (glasses), 挂; 打电话
-もう, もう, mou, already; anymore, 已经
-さっき, さっき, sakki, a little while ago, 刚才
-たった今, たったいま, tattaima, just now, 刚刚
-もう一度, もういちど, mou ichido, once more, 再一次
-前に, まえに, mae ni, before, 之前
-後で, あとで, ato de, later, 之后
-良かったです, よかったです, yokatta desu, that's good; I'm glad, 太好了; 我很高兴
-上げます, あげます, agemasu, to raise; to give, 举起; 给
-貰います, もらいます, moraimasu, to receive, 收到
-中国人, ちゅうごくじん, chuugokujin, Chinese (person), 中国人
-日本人, にほんじん, nihonjin, Japanese (person), 日本人
-韓国人, かんこくじん, kankokujin, Korean (person), 韓国人
-アメリカ人, アメリカじん, amerikajin, American (person), 美国人
-フランス人, フランスじん, furansujin, French (person), 法国人
-学生, がくせい, gakusei, (university) student, 大学生
-社員, しゃいん, shain, staff member, 职员
-研修生, けんしゅうせい, kenshuusei, trainee, 进修生
-私, わたし, watashi, I; me, 我
-李, り, ri, Li (surname), 李
-王, おう, ou, Wang (surname), 王
-張, ちょう, chou, Zhang (surname), 张
-森, もり, mori, Mori (surname), 森
-林, はやし, hayashi, Hayashi (surname), 林
-吉田, よしだ, yoshida, Yoshida (surname), 吉田
-中国, ちゅうごく, chuugoku, China, 中国
-東京大学, とうきょうだいがく, toukyou daigaku, University of Tokyo, 东京大学
-北京大学, ぺきんだいがく, pekin daigaku, Peking University, 北京大学
-北京旅行社, ぺきんりょこうしゃ, pekin ryokousha, Beijing Travel Agency, 北京旅行社
-JC企画, ジェーシーきかく, jeeshii kikaku, JC Planning, JC策划公司
-どうも, どうも, doumo, very; thanks, 非常；很
-そうです, そうです, sou desu, that's right, 是（这样）
-違います, ちがいます, chigaimasu, that's not right, 不是
-分かりません, わかりません, wakarimasen, I don't know, 不知道
-どうもすみません, どうもすみません, doumo sumimasen, I'm very sorry, 实在对不起
-申し訳ございません, もうしわけございません, moushiwake gozaimasen, I'm very sorry (formal), 非常抱歉（正式）
-かばん, かばん, kaban, bag; briefcase, 包; 公文包
-いす, いす, isu, chair, 椅子
-かぎ, かぎ, kagi, key; lock, 钥匙; 锁
-会社, かいしゃ, kaisha, company, 公司
+土曜日, どようび, doyoubi, Saturday, 星期六
+日曜日, にちようび, nichiyoubi, Sunday, 星期日
+部屋, へや, heya, Room, 房间
+庭, にわ, niwa, Garden, 花园
+家, いえ, ie, House, 
+居間, いま, ima, Living room, 客厅
+冷蔵庫, れいぞうこ, reizouko, Refrigerator, 冰箱
+壁, かべ, kabe, Wall, 墙
+本棚, ほんだな, hondana, Bookshelf, 书架
+猫, ねこ, neko, Cat, 猫
+犬, いぬ, inu, Dog, 狗
+鳥, とり, tori, Bird, 鸟
+魚, さかな, sakana, Fish, 鱼
+箱, はこ, hako, Box, 盒子
+眼鏡, めがね, megane, Glasses, 眼镜
+子供, こども, kodomo, Child, 孩子
+兄弟, きょうだい, kyoudai, Siblings, 兄弟姐妹
+両親, りょうしん, ryoushin, Parents, 父母
+男, おとこ, otoko,,
+女, おんな, onna,,
+生徒, せいと, seito, Student, 学生
+上, うえ, ue, Up, 上
+下, した, shita, Down, 下
+左, ひだり, hidari, Left, 左
+右, みぎ, migi, Right, 右
+中, なか, naka, Middle, 中
+外, そと, soto, Outside, 外
+前, まえ, mae, Front, 前
+後ろ, うしろ, ushiro, Back, 后面
+横, よこ, yoko, Side, 旁边
+御飯, ごはん, gohan, Rice, 米饭
+教室, きょうしつ, kyoushitsu, Classroom, 教室
+売店, ばいてん, baiten, Shop, 小卖部
+先週, せんしゅう, senshuu, Last week, 上周
+今週, こんしゅう, konshuu, This week, 本周
+来週, らいしゅう, raishuu, Next week, 下周
+再来週, さらいしゅう, sarai shuu, Week after next, 下下周
+毎日, まいにち, mainichi, Every day, 每天
+毎週, まいしゅう, maishuu, Every week, 每周
+毎朝, まいあさ, maiasa, Every morning, 每天早上
+毎晩, まいばん, maiban, Every evening, 每天晚上
+午前, ごぜん, gozen, Morning, 上午
+午後, ごご, gogo, Afternoon, 下午
+今朝, けさ, kesa, This morning, 今天早上
+来年, らいねん, rainen, Next year, 明年
+去年, きょねん, kyonen, Last year, 去年
+夜, よる, yoru, Night, 夜
+昼, ひる, hiru, Daytime, 白天
+晩御飯, ばんごはん, bangohan, Dinner, 晚饭
+朝御飯, あさごはん, asagohan, Breakfast, 早餐
+昼御飯, ひるごはん, hirugohan, Lunch, 午餐
+おやつ, おやつ, oyatsu, Snack, 点心
+学校, がっこう, gakkou, School, 学校
+試験, しけん, shiken, Exam, 考试
+仕事, しごと, shigoto, Work, 工作
+遅刻, ちこく, chikoku, Late, 迟到
+休み, やすみ, yasumi, Rest, 休息
+休暇, きゅうか, kyuuka, Vacation, 假期
+研修, けんしゅう, kenshuu, Training, 培训
+展覧会, てんらんかい, tenrankai, Exhibition, 展览会
+歓迎会, かんげいかい, kangeikai, Welcome party, 欢迎会
+送別会, そうべつかい, soubetsukai, Farewell party,
+お宅, おたく, otaku, Your home, 贵宅
+いつ, いつ, itsu, When, 什么时候
+何時, なんじ, nanji, What time, 几点
+休みます, やすみます, yasumimasu, To rest, 休息
+働きます, はたらきます, hatarakimasu, To work, 工作
+勉強します, べんきょうします, benkyou shimasu, To study, 学习
+始まります, はじまります, hajimarimasu, To begin, 开始
+終わります, おわります, owarimasu, To finish, 结束
+起きます, おきます, okimasu, To get up, 起床
+寝ます, ねます, nemasu, To sleep, 睡觉
+帰ります, かえります, kaerimasu, To return, 回家
+出かけます, でかけます, dekakemasu, To go out, 出门
+北京支社, ぺきんししゃ, pekin shisha,, 北京分公司
+神戸, こうべ, koube, Kobe, 神户
+誕生日, たんじょうび, tanjoubi, Birthday, 生日
+時刻, じこく, jikoku, Time, 时间
+一時, いちじ, ichiji, One o'clock, 一点
+二時, にじ, niji, Two o'clock, 两点
+三時, さんじ, sanji, Three o'clock, 三点
+四時, よじ, yoji, Four o'clock, 四点
+五時, ごじ, goji, Five o'clock, 五点
+六時, ろくじ, rokuji, Six o'clock, 六点
+七時, しちじ, shichiji, Seven o'clock, 七点
+八時, はちじ, hachiji, Eight o'clock, 八点
+九時, くじ, kuji, Nine o'clock, 九点
+十時, じゅうじ, juuji, Ten o'clock, 十点
+十一時, じゅういちじ, juuichiji, Eleven o'clock, 十一点
+いつ分, いつぷん, itsupun, one minute, 一分
+二分, にふん, nifun, Two minutes, 两分
+三分, さんぷん, sanpun, Three minutes, 三分
+四分, よんぷん, yonpun, Four minutes, 四分
+五分, ごふん, gofun, Five minutes, 五分
+六分, ろっぷん, roppun, Six minutes, 六分
+七分, ななふん, nanafun, Seven minutes, 七分
+八分, はっぷん, happun, Eight minutes, 八分
+九分, きゅうふん, kyuufun, Nine minutes, 九分
+十分, じゅっぷん, juppun, Ten minutes, 十分
+十一分, じゅういっぷん, juuippun, Eleven minutes, 十一分钟

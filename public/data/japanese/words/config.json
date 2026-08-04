@@ -2,6 +2,8 @@
     "files" : [
         "hiragana1.csv",
         "hiragana.csv",
+        "hiragana2.csv",
+        "hiragana3.csv",
         "katakana.csv"
-    ]   
+    ]
 }
