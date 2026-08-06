@@ -89,6 +89,66 @@ Notes:
 - Always fill new appends into the highest-numbered file that still has room
   before creating the next one.
 
+## Wire a NEW CSV into the Vue app (required whenever you create a new file)
+
+`config.json` is read **only by the Python scripts** (`download.py`,
+`check_duplicates.py`, etc.). The website does **not** read `config.json` — it
+uses one hardcoded Vue page per CSV, plus a route and a menu entry. So a newly
+created CSV (e.g. `hiragana4.csv`) is invisible on the site until you add all
+three of the following. (Appending words to an *existing* CSV needs none of
+this — only new files do.)
+
+Paths are relative to the repo root
+(`/Users/xiangli/privatex/magicien_de_code`).
+
+1. **Create the page component** by copying the previous numbered page and
+   swapping every `N-1` → `N` reference (title, description, subtitle, the
+   `fetch('/data/japanese/words/hiraganaN.csv')` path, and BOTH
+   `downloads/hiraganaN/` audio paths):
+
+   ```bash
+   cd src/views/articles/japanese
+   cp JapaneseHiragana3WordsPage.vue JapaneseHiragana4WordsPage.vue
+   sed -i '' \
+     -e 's#ひらがな単語3#ひらがな単語4#g' \
+     -e 's#Japanese Hiragana Words 3#Japanese Hiragana Words 4#g' \
+     -e 's#Hiragana Vocabulary 3#Hiragana Vocabulary 4#g' \
+     -e 's#words/hiragana3.csv#words/hiragana4.csv#g' \
+     -e 's#downloads/hiragana3/#downloads/hiragana4/#g' \
+     JapaneseHiragana4WordsPage.vue
+   ```
+
+   (For a new katakana file, copy `JapaneseKatakanaWordsPage.vue` instead —
+   note katakana pages parse 4 columns, not 5.)
+
+2. **Add a route** in `src/router/index.ts`, after the previous numbered entry:
+
+   ```ts
+   {
+     path: '/articles/japanese/hiragana4',
+     name: 'japanese-hiragana4-words',
+     component: () => import('../views/articles/japanese/JapaneseHiragana4WordsPage.vue'),
+   },
+   ```
+
+3. **Add a menu entry** in `public/data/japanese/title.json` (this drives the
+   Articles listing, loaded via `useArticles.ts` — NOT `config.json`):
+
+   ```json
+   {
+     "title": "ひらがな単語4",
+     "page": "japanese/hiragana4",
+     "creationDate": "2026-08-06"
+   }
+   ```
+
+4. **Verify** the JSON parses and the app type-checks:
+
+   ```bash
+   python3 -c "import json; json.load(open('public/data/japanese/title.json'))"
+   npm run type-check
+   ```
+
 ## Step-by-step procedure
 
 1. Read the photo and list every word with its reading and meaning.
@@ -96,7 +156,9 @@ Notes:
 3. For each word, check for duplicates across all CSVs; skip any that exist.
 4. Append the remaining words to the correct file in the correct column order.
 5. If a file passes 100 words, split into the next numbered file and update
-   `config.json`.
+   `config.json`. **When you create a brand-new CSV file, also wire it into the
+   Vue app** — see "Wire a NEW CSV into the Vue app" above (new page component,
+   router entry, and `title.json` entry). Skip this for appends to existing files.
 6. Verify with the duplicate checker:
 
    ```bash
