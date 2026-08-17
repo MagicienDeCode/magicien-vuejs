@@ -64,6 +64,11 @@ const router = createRouter({
       component: () => import('../views/articles/japanese/JapaneseHiragana4WordsPage.vue'),
     },
     {
+      path: '/articles/japanese/hiragana5',
+      name: 'japanese-hiragana5-words',
+      component: () => import('../views/articles/japanese/JapaneseHiragana5WordsPage.vue'),
+    },
+    {
       path: '/articles/chinese/gushiwen-tang',
       name: 'gushiwen-tang',
       component: () => import('../views/articles/chinese/GushiwenTangPage.vue'),
