@@ -98,8 +98,7 @@ created CSV (e.g. `hiragana4.csv`) is invisible on the site until you add all
 three of the following. (Appending words to an *existing* CSV needs none of
 this — only new files do.)
 
-Paths are relative to the repo root
-(`/Users/xiangli/privatex/magicien_de_code`).
+Paths are relative to the repo root (`$HOME/privatex/magicien-vuejs`).
 
 1. **Create the page component** by copying the previous numbered page and
    swapping every `N-1` → `N` reference (title, description, subtitle, the
@@ -162,7 +161,7 @@ Paths are relative to the repo root
 6. Verify with the duplicate checker:
 
    ```bash
-   source /Users/xiangli/.venvs/p3env/bin/activate   # env with pandas (alias: activep3)
+   source $HOME/.venvs/p3env/bin/activate   # env with pandas (alias: activep3)
    python check_duplicates.py
    ```
 
@@ -172,7 +171,7 @@ Paths are relative to the repo root
    duplicate check is clean):
 
    ```bash
-   source /Users/xiangli/.venvs/p3env/bin/activate   # env with the TTS deps (alias: activep3)
+   source $HOME/.venvs/p3env/bin/activate   # env with the TTS deps (alias: activep3)
    python download.py
    ```
 

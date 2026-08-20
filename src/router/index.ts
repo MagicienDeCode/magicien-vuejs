@@ -39,6 +39,11 @@ const router = createRouter({
       component: () => import('../views/articles/japanese/JapaneseKatakanaWordsPage.vue'),
     },
     {
+      path: '/articles/japanese/katakana2',
+      name: 'japanese-katakana2-words',
+      component: () => import('../views/articles/japanese/JapaneseKatakana2WordsPage.vue'),
+    },
+    {
       path: '/articles/japanese/hiragana',
       name: 'japanese-hiragana-words',
       component: () => import('../views/articles/japanese/JapaneseHiraganaWordsPage.vue'),
