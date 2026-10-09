@@ -144,6 +144,10 @@ useMeta({
           rectify mistakes and be tenacious is essential.
         </p>
       </div>
+      <div class="home-right-divider-bgc"></div>
+      <RouterLink to="/mbti">
+        <a-button type="primary" size="large">MBTI 性格测试</a-button>
+      </RouterLink>
     </a-col>
   </a-row>
 </template>

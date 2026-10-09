@@ -1,0 +1,103 @@
+.mbti-page {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0 48px;
+
+  @media (max-width: @screen-md) {
+    padding: 16px 0 24px;
+  }
+}
+
+.mbti-card {
+  width: 100%;
+  max-width: 720px;
+  border-radius: 12px;
+  box-shadow: @box-shadow-base;
+}
+
+.mbti-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid @primary-color;
+
+  @media (max-width: @screen-lg) {
+    font-size: 24px;
+  }
+}
+
+.mbti-progress {
+  margin-bottom: 28px;
+}
+
+.mbti-progress-info {
+  display: flex;
+  justify-content: space-between;
+  color: @text-color-secondary;
+  font-size: @font-size-sm;
+}
+
+.mbti-question {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  min-height: 60px;
+
+  @media (max-width: @screen-md) {
+    font-size: @font-size-lg;
+  }
+}
+
+.mbti-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.mbti-option {
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid @border-color;
+  border-radius: @border-radius-base;
+  font-size: @font-size-base;
+  transition: all 0.3s;
+
+  &:hover {
+    border-color: @primary-color;
+  }
+}
+
+.mbti-option-selected {
+  border-color: @primary-color;
+  background: fade(@primary-color, 6%);
+}
+
+.mbti-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 28px;
+}
+
+.mbti-summary {
+  font-size: @font-size-base;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.mbti-score {
+  margin-bottom: 12px;
+}
+
+.mbti-score-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: @font-size-sm;
+  color: @text-color-secondary;
+}
+
+.mbti-score-winner {
+  color: @primary-color;
+  font-weight: 600;
+}

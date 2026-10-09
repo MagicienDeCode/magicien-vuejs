@@ -24,6 +24,11 @@ const router = createRouter({
       component: () => import('../views/ilun/IlunPage.vue'),
     },
     {
+      path: '/mbti',
+      name: 'mbti',
+      component: () => import('../views/mbti/MbtiPage.vue'),
+    },
+    {
       path: '/articles',
       name: 'articles',
       component: () => import('../views/articles/ArticlesPage.vue'),
