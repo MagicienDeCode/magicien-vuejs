@@ -36,5 +36,3 @@ coverage
 __screenshots__/
 .claude/settings.local.json
 
-# Personal audio, not for publishing
-public/data/japanese/songs/believe.mp3
